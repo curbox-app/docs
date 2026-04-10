@@ -1,0 +1,28 @@
+{
+  "name": "curbox-blogs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.3",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/tailwind": "^5.1.4",
+    "@astrojs/react": "^4.2.1",
+    "astro": "^5.6.0",
+    "@astrojs/starlight": "^0.32.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.17",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}

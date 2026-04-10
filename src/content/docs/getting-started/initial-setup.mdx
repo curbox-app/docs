@@ -1,0 +1,75 @@
+---
+title: Initial Setup
+description: Configure Curbox for the first time — permissions, onboarding, and privacy settings.
+sidebar:
+  order: 2
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+After installing Curbox, the first-launch setup wizard walks you through granting the necessary permissions. This page explains each permission and why it is required.
+
+---
+
+## Granting Permissions
+
+<Steps>
+
+1. **Usage Access (Required)**
+
+   Curbox needs *Usage Access* to read which apps you have used and for how long. This is the only way to display accurate analytics and enforce time limits.
+
+   When prompted, tap **Go to settings**, find **Curbox** in the list, and toggle *"Permit usage tracking"* on.
+
+   <Aside type="caution">
+   Without Usage Access, Curbox cannot function. If you skip this step, the app will remind you each time you open it.
+   </Aside>
+
+2. **Overlay / Draw over other apps (Required for blocking)**
+
+   To show the calm lock screen when a time limit is reached, Curbox needs permission to draw over other apps.
+
+   Tap **Go to settings**, find **Curbox**, and enable *"Allow display over other apps"*.
+
+3. **Notification Access (Recommended)**
+
+   This allows Curbox to give you gentle pre-limit warnings ("You have 10 minutes left on Instagram today").
+
+   Tap **Allow** on the notification permission dialog. You can adjust notification behaviour at any time in your device settings.
+
+4. **Accessibility Service (Optional — for Deep Work Mode)**
+
+   [Deep Work Mode](/core-features/deep-work-mode/) uses an Accessibility Service to prevent you from force-quitting blocked apps. This is entirely opt-in and can be disabled when not needed.
+
+   <Aside type="tip">
+   If you are using [Shizuku](/advanced/shizuku/), you can replace the Accessibility Service with a more robust, privacy-preserving alternative. See the [Shizuku guide](/advanced/shizuku/) for details.
+   </Aside>
+
+</Steps>
+
+---
+
+## Privacy Dashboard
+
+All data Curbox collects stays on your device. You can review, export, or delete it at any time from:
+
+**Curbox → Settings → Privacy → Manage my data**
+
+---
+
+## Choosing a Default Mode
+
+Curbox operates in two main modes:
+
+| Mode | Best for |
+|------|----------|
+| **Standard** | Day-to-day app limits with soft warnings |
+| **Deep Work** | Distraction-free focus blocks — apps are fully locked |
+
+You can switch modes at any time. We recommend starting with **Standard** to get a feel for your usage patterns before adding hard blocks.
+
+---
+
+## Next Steps
+
+Your device is now set up. Head to [Your First Focused Session →](/getting-started/first-session/) to create your first session.

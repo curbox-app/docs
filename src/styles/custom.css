@@ -1,0 +1,152 @@
+/*
+ * Curbox – Custom Starlight Theme Override
+ * Palette: soft off-white backgrounds, sage-green accents, deep charcoal text.
+ */
+
+/* ──────────────────────────────────────────────
+   Google Fonts import
+   ────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ──────────────────────────────────────────────
+   Starlight CSS custom properties (light theme)
+   ────────────────────────────────────────────── */
+:root {
+  /* Accent colour: Sage Green */
+  --sl-color-accent-low: #eef2e6;
+  --sl-color-accent: #8a9a5b;
+  --sl-color-accent-high: #5a6a3b;
+
+  /* Background tones */
+  --sl-color-bg: #f9f9f9;
+  --sl-color-bg-nav: #f9f9f9;
+  --sl-color-bg-sidebar: #f3f4f6;
+  --sl-color-bg-inline-code: #eef2e6;
+  --sl-color-bg-badge: #eef2e6;
+
+  /* Text colours */
+  --sl-color-text: #333333;
+  --sl-color-text-accent: #8a9a5b;
+  --sl-color-text-invert: #f9f9f9;
+
+  /* Hairline borders */
+  --sl-color-hairline-shade: #e5e7eb;
+  --sl-color-hairline: #e5e7eb;
+
+  /* Typography */
+  --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Sidebar width */
+  --sl-sidebar-width: 17rem;
+
+  /* Content width */
+  --sl-content-width: 46rem;
+}
+
+/* Dark theme overrides */
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #2a3320;
+  --sl-color-accent: #a0b46e;
+  --sl-color-accent-high: #c0d48e;
+
+  --sl-color-bg: #1a1c18;
+  --sl-color-bg-nav: #1a1c18;
+  --sl-color-bg-sidebar: #1f221b;
+  --sl-color-bg-inline-code: #2a3320;
+
+  --sl-color-text: #e2e4dc;
+  --sl-color-text-accent: #a0b46e;
+
+  --sl-color-hairline-shade: #2e322a;
+  --sl-color-hairline: #2e322a;
+}
+
+/* ──────────────────────────────────────────────
+   Global base resets
+   ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sl-font);
+  color: var(--sl-color-text);
+  background: var(--sl-color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ──────────────────────────────────────────────
+   Prose / content enhancements
+   ────────────────────────────────────────────── */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sl-markdown-content a {
+  color: var(--sl-color-accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-color: var(--sl-color-accent);
+}
+
+/* ──────────────────────────────────────────────
+   Navigation / header polish
+   ────────────────────────────────────────────── */
+header.header {
+  border-bottom: 1px solid var(--sl-color-hairline);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ──────────────────────────────────────────────
+   Sidebar polish
+   ────────────────────────────────────────────── */
+.sidebar-content {
+  padding-top: 1.5rem;
+}
+
+/* ──────────────────────────────────────────────
+   Code blocks
+   ────────────────────────────────────────────── */
+.expressive-code {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* ──────────────────────────────────────────────
+   Aside / callout variants
+   ────────────────────────────────────────────── */
+.starlight-aside--tip {
+  --sl-color-asides-text-accent: #8a9a5b;
+  --sl-color-asides-border: #8a9a5b;
+  border-radius: 0.5rem;
+}
+
+/* ──────────────────────────────────────────────
+   Reduce motion – respect user preference
+   ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
