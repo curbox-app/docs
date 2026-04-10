@@ -9,7 +9,7 @@ export async function GET(context: APIContext) {
 
   // Build the full base URL (e.g. https://curbox-app.github.io/blogs/)
   const siteWithBase = context.site
-    ? new URL(import.meta.env.BASE_URL, context.site).href
+    ? new URL(import.meta.env.BASE_URL.replace(/\/?$/, '') + '/', context.site).href
     : 'https://curbox-app.github.io/blogs/';
 
   return rss({
