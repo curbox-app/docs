@@ -39,8 +39,7 @@ jobs:
       - name: Build with Astro
         uses: withastro/action@v3
         with:
-          node-version: 20
-          # path: .   # uncomment if astro project is not at the repo root
+          package-manager: bun@latest
 
   deploy:
     name: Deploy
