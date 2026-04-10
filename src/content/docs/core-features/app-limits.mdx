@@ -1,62 +1,53 @@
 ---
 title: The App Blocker
-description: How to use curbox to block apps
+description: Discover how Curbox helps you break free from distractions by blocking apps.
 sidebar:
   order: 1
 ---
 
-import { Steps, Aside, Code } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
 
 
----
+## How the App Blocker Works
 
-## How App blocker works
+Curbox is your friendly companion for staying focused. It keeps an eye on the apps you are using and gently blocks the ones that distract you, based entirely on the rules you create.
 
-Curbox tracks what app you're using in real time and decides if the app needs to be blocked or allows according the configurations you set.
+Here is a simple guide to using the app blocker:
 
+<Steps>
+1. **Create a New Group**
+   Open Curbox and head over to the "Reducers" screen. You can think of this as your command center. Select "App Pause" and tap the Add button in the bottom right corner to start a new group of blocked apps.
 
-1. ** Create a new app blocker group **
-  To create a new app group of blocked apps, Select Reducers and you'll be presented with a list of options, seledct app pause and then press the add button on bottom right.
+2. **Pick Your Apps**
+   You will see a big list of the apps installed on your phone. Simply tap the ones you find distracting. All the rules you set next will apply to the apps you choose here.
 
-2. ** Select Apps **
-  You'll be presented with a varied range of options, all the options you select here would be applied to the entire range of apps selected.
+3. **Decide How to Block**
+   Curbox gives you two easy ways to limit your app time.
+   
+   First, you can block by usage. This means you tell Curbox, "Please block Instagram if I use it for more than an hour today." 
+   
+   Second, you can block by time of day. This is perfect if you only want to allow certain apps at specific times, like letting yourself check Facebook only between 7 PM and 9 PM on weekends.
 
-3. ** Blocking Configuration **
-  Curbox provides two app blocking type, prompty the usage based and time based
-  
-  The usage based app blocking blocks apps on the basis of how long you use an app. For example "Block instagram if i use it more than 1 hour a day"
-  The time based app blocking allows apps to be used only between certain time intervals during a day. Like "Let me use instagram between 7pm to 9pm on Sunday and Saturday"
+4. **Set Your Limits**
+   Tap the "Configure Settings" button. Now, just dial in the daily limits or the exact time ranges you decided on. It is really that easy!
+</Steps>
 
-4. ** Press the configure settings button ** to set the limits (if you chose usage based blocking) or time ranges (if you selected time based blocking) for each individual day.
+## The Warning Screen
 
+When you try to open a blocked app outside your allowed time or after you spent your limit, Curbox steps in with a warning screen. This friendly reminder gives you a moment to pause and decide if you really need to open the app right now.
 
-## The warning screen
-In curbox the screen that appears when you press a blocked app anytime when outside the set time limit or app usage limit.
-For example if you've set a limit of 1 hour using reddit, exceed it. You'll be shown the warning screen.
+You can even write a custom message to yourself! Something like "Remember your goals" will show up on this screen.
 
-This is the screen that decides whether you should be allowed to pass or not.
+## Unlocking Options
 
-The warning screen configuration might look scary at first but believe me its very easy yet extremely powerful
-You can setup here what message(called the warning message) you'd like to appear when you press an app from that group.
+We know that sometimes you truly need to use an app. The warning screen gives you choices on how to proceed. 
 
-Then you can specify on what basis you'll be allowed to unlock the app by choosing the unlock behaviour option.
+**If you want strict limits:**
+You can set things up so there is no way around the block. You can either be sent right back to your home screen immediately, or see your warning message but still be locked out.
 
-Curbox provides a number of unlock behaviours.
+**If you just need a little flexibility:**
+Curbox lets you earn more time. You can pick an option that lets you choose exactly how many extra minutes you need. Or, you can set a fixed amount of bonus time.
 
-Behaviours that completely block the app 
-- Skip warning screen: This method will replicate what the focus mode does, simply press back. don't show anything or let user proceed. This wont show the custom warning message you set. 
-- Disable Unlcoking entirely: This method will show you the warning message you've set but not let you proceed
+For an extra challenge, you can require yourself to scan a specific barcode or QR code around your house to get more time. You could also make yourself type out a full sentence, like "I promise I only need five minutes." Another great option is the intent log, where you have to type out why you are opening the app. Your reason will stay on screen as a gentle reminder while you use the app.
 
-Behaviours that allow to extend app usage once the set configuration has been exceeded. 
-- User Selects unlock time: This would show a time picker on the warning screen that lets you specify how long more you want to use the app. 
-- Fixed unlock time: You preselect how long the time extend would last.
-
-- Qr/Bar code: You can setup a system where scanning different qr/bar codes let you use extend the app usage for different time. For example i can set it up let me use the app for 10 mins if i scan the code on my sunscreen, or 20 mins if i scan the code on a pack of flour. You can generate and print new qr codes too.
-- Unlock requires typing a sentence: This forces you to repeat a specific sentence to extend the app usage. eg, requiring to type: "I'm a loser for giving up my promise to lock in" to extend the app for x hours.
-- Unlock requires stating intent: This mechanism asks user why they need to extend the app usage before letting them in. This written intent would be further on logged onto reducers>logged intents. The intent you type would be displayed as an overlay over your app the entire time you use it during the selected time reminding you your original intention.
-
-
-If you are someone that impulsively decides to extend an app usage, the wait before unlocking feature basically FORCES YOU TO WAIT for set time before letting you in. This prompts the user to read the intented warning message.
-The vibrate and max brightness on warning option basically wakes you up from the zombie state you get into when scrolling addicitve apps to let you make a proper decision about extending app usage.
-
----
+If you often unlock apps by habit, you can turn on a required waiting period. This forces you to stop and wait a few moments before the app unlocks. You can even enable maximum brightness to wake your brain up and help you make a thoughtful choice.
