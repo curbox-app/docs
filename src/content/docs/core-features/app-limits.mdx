@@ -1,0 +1,95 @@
+---
+title: Setting App Limits
+description: How to set daily time limits on individual apps or app categories in Curbox.
+sidebar:
+  order: 1
+---
+
+import { Steps, Aside, Code } from '@astrojs/starlight/components';
+
+App Limits let you set a maximum daily allowance for any app on your device. When you approach or hit the limit, Curbox gives you a calm, non-punishing nudge.
+
+---
+
+## How Limits Work
+
+Curbox tracks real *foreground* usage for each app — time spent with the app actually on screen. Background activity (music, navigation) is not counted.
+
+Limits reset at **midnight local time** by default. You can change the reset time in **Settings → Limits → Daily reset time**.
+
+---
+
+## Creating a Limit
+
+<Steps>
+
+1. **Go to** **Curbox → App Limits** (the clock icon in the bottom nav).
+
+2. **Tap the `+` button** in the top-right corner.
+
+3. **Select an app** from the list. Apps are sorted by your recent usage, making it easy to find your biggest time-sinks.
+
+4. **Set the daily limit**
+
+   Drag the dial or type a duration. You can set limits as short as 5 minutes or as long as 6 hours.
+
+5. **Choose a warning threshold** (optional)
+
+   You'll receive a quiet notification when this percentage of your limit is used. Defaults to 80%.
+
+6. **Tap "Save"**.
+
+</Steps>
+
+<Aside type="tip">
+Start with limits that are slightly above your current usage — for example, if you spend 2 hours on Instagram daily, start with a 1h 45m limit. Aggressive limits set on day one are easy to override. Gradual reduction is more effective.
+</Aside>
+
+---
+
+## Category Limits
+
+Instead of limiting individual apps, you can limit an entire *category* — for example, all apps tagged as "Social" or "Entertainment".
+
+Category limits apply to the combined usage across all apps in that category.
+
+<Code
+  code={`Category: Social (4 apps)
+  ├── Instagram
+  ├── Twitter / X
+  ├── TikTok
+  └── Reddit
+
+Daily limit: 1 hour total across all 4 apps`}
+  lang="text"
+  title="Example: Social Category Limit"
+/>
+
+---
+
+## What Happens When You Hit a Limit?
+
+By default:
+
+1. At **80%** of your limit → a quiet notification ("20 minutes left on YouTube").
+2. At **100%** → the app shows the calm lock screen with a message and the option to snooze for 15 minutes (once per day, per app).
+
+The snooze option exists because Curbox is not a prison. It respects your autonomy while making the choice *intentional* rather than mindless.
+
+---
+
+## Pausing and Deleting Limits
+
+- **Pause** a limit temporarily (e.g., for a weekend) via the long-press context menu on any limit card.
+- **Delete** a limit by swiping it left in the App Limits list.
+
+<Aside type="note">
+Paused limits are shown greyed-out with a "Paused" badge. Usage during a pause is still tracked in your analytics — it is simply not enforced.
+</Aside>
+
+---
+
+## Next Steps
+
+- [Using 'Deep Work' Mode →](/core-features/deep-work-mode/)
+- [Understanding Your Analytics →](/core-features/analytics/)

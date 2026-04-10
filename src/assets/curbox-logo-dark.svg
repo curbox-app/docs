@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" fill="none">
+  <!-- Icon -->
+  <path d="M14 5.5l-2.25-1.313M14 5.5v2.25m0-2.25l-2.25 1.313M2 5.5l2.25-1.313M2 5.5l2.25 1.313M2 5.5v2.25m6 3l2.25-1.313M8 10.75l-2.25-1.313M8 10.75V13m0 6.75l2.25-1.313M8 19.75V17.5m0 2.25l-2.25-1.313m0-12.875L8 4.25l2.25 1.313M14 12.25v2.25l-6 3.5-6-3.5v-2.25"
+    stroke="#a0b46e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Wordmark -->
+  <text x="24" y="21" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="16" fill="#e2e4dc">Curbox</text>
+</svg>

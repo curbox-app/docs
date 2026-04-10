@@ -1,0 +1,88 @@
+---
+title: Installation
+description: How to install Curbox on your Android device.
+sidebar:
+  order: 1
+---
+
+import { Steps, Aside, Code } from '@astrojs/starlight/components';
+
+Curbox is a free, open-source Android application available directly from GitHub Releases. It does **not** require the Play Store.
+
+## System Requirements
+
+- Android **8.0 (Oreo)** or newer
+- ~8 MB of storage
+- *Optional but recommended:* [Shizuku](https://shizuku.rikka.app/) for full app-blocking capabilities
+
+---
+
+## Installation Methods
+
+### Method 1: Direct APK (Recommended)
+
+<Steps>
+
+1. **Download the APK**
+
+   Visit the [GitHub Releases page](https://github.com/curbox-app/curbox/releases/latest) and download the latest `curbox-vX.X.X.apk` file.
+
+2. **Allow unknown sources**
+
+   On Android, open **Settings → Apps → Special app access → Install unknown apps**. Find your browser or file manager, and enable *"Allow from this source"*.
+
+3. **Install the APK**
+
+   Open the downloaded file from your notifications drawer or file manager. Tap **Install**.
+
+4. **Launch Curbox**
+
+   Find Curbox in your app drawer and open it to complete the initial setup.
+
+</Steps>
+
+<Aside type="tip">
+After installation you can disable *"Allow from this source"* again for the app you used to install Curbox. This reduces your device's attack surface.
+</Aside>
+
+---
+
+### Method 2: F-Droid
+
+Curbox is available on [F-Droid](https://f-droid.org/), the community-maintained repository of FOSS Android apps. F-Droid verifies builds from source, giving you an extra layer of assurance.
+
+<Steps>
+
+1. Install the [F-Droid client](https://f-droid.org/) if you haven't already.
+2. Open F-Droid and search for **Curbox**.
+3. Tap **Install**. F-Droid handles permissions automatically.
+
+</Steps>
+
+<Aside type="note">
+F-Droid releases may lag behind the latest GitHub release by a few days while builds are verified.
+</Aside>
+
+---
+
+## Verifying the APK (Optional)
+
+For maximum security, verify the SHA-256 checksum of the downloaded APK against the value published on the releases page.
+
+<Code
+  code={`# Linux / macOS
+sha256sum curbox-vX.X.X.apk
+
+# Windows PowerShell
+Get-FileHash curbox-vX.X.X.apk -Algorithm SHA256`}
+  lang="bash"
+  title="Verify APK checksum"
+/>
+
+Compare the output to the checksum listed under **Assets** on the GitHub release.
+
+---
+
+## Next Steps
+
+Once installed, proceed to [Initial Setup →](/getting-started/initial-setup/)

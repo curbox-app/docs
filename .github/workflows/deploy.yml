@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger on pushes to the main branch
+  push:
+    branches: [main]
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment; skip queued runs but do not cancel
+# an in-progress deployment to avoid leaving the site in a half-deployed state.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # withastro/action handles Node setup, dependency install, `astro build`,
+      # and uploading the built site as a GitHub Pages artifact in one step.
+      #
+      # IMPORTANT — base path:
+      #   • Custom domain (curbox.app): no changes needed; `base` stays unset in astro.config.mjs.
+      #   • Default GitHub Pages URL (curbox-app.github.io/blogs): add `base: '/blogs'`
+      #     to astro.config.mjs and set the env var below:
+      #       env:
+      #         PUBLIC_BASE_PATH: /blogs
+      - name: Build with Astro
+        uses: withastro/action@v3
+        with:
+          node-version: 20
+          # path: .   # uncomment if astro project is not at the repo root
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

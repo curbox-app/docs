@@ -1,0 +1,79 @@
+---
+title: Understanding Your Analytics
+description: How to read and use Curbox's screentime analytics to build healthier digital habits.
+sidebar:
+  order: 3
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Curbox's analytics screen gives you an honest, non-judgmental picture of how you spend time on your device. The goal is *awareness*, not shame.
+
+---
+
+## The Daily Overview
+
+The main analytics screen shows a 24-hour timeline of your device usage. Each app is shown as a coloured segment proportional to its share of your total screentime.
+
+Below the timeline, apps are listed in order of usage, with:
+
+- **Total time** used today
+- **Sessions** — how many separate times you opened the app
+- **Average session length** — often more revealing than total time
+
+<Aside type="tip">
+A high *number of sessions* with a short *average session length* is a classic sign of compulsive checking — the kind of usage that is most draining. Curbox surfaces this pattern clearly.
+</Aside>
+
+---
+
+## Weekly and Monthly Trends
+
+Swipe left on the overview to see 7-day and 30-day summaries. The weekly view shows:
+
+- Total daily screentime bars (tap any bar for a breakdown)
+- Your most-used app each day
+- Comparison against your personal weekly average
+
+---
+
+## Focus Score
+
+The **Focus Score** (0–100) is Curbox's composite metric. It weighs:
+
+- Time spent in Deep Work sessions (positive)
+- Limit violations / snooze usage (negative)
+- Long, uninterrupted sessions vs. fragmented checking (positive vs. negative)
+
+The score is personal — it is calibrated against *your own* baseline, not a universal standard. A score of 72 for you means something different than a score of 72 for someone else.
+
+<Aside type="note">
+The Focus Score algorithm is fully documented in the [source code](https://github.com/curbox-app/curbox). You can audit exactly how it is calculated.
+</Aside>
+
+---
+
+## Exporting Your Data
+
+All analytics data can be exported as **JSON** or **CSV** from:
+
+**Analytics → ⋮ Menu → Export data**
+
+The export includes raw session-level data. You can import it into your own scripts, spreadsheets, or visualisation tools.
+
+---
+
+## Deleting Your Data
+
+To delete all stored analytics:
+
+**Settings → Privacy → Manage my data → Delete all analytics**
+
+This action is irreversible. Curbox will ask for confirmation and there is a 24-hour undo window.
+
+---
+
+## Next Steps
+
+- [Configuring Shizuku →](/advanced/shizuku/)
+- [Customizing the Calming UI →](/advanced/customizing-ui/)

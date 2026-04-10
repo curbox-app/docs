@@ -1,0 +1,103 @@
+---
+title: Customizing the Calming UI
+description: Personalize Curbox's visual experience — themes, fonts, lock screen messages, and more.
+sidebar:
+  order: 2
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Curbox is designed to be calm by default. But calm means different things to different people. This guide covers all the ways you can personalize the visual experience without adding visual noise.
+
+---
+
+## Themes
+
+Curbox ships with three built-in themes and supports custom themes.
+
+| Theme | Description |
+|-------|-------------|
+| **Sage** (default) | Muted greens and off-whites — inspired by nature |
+| **Slate** | Cool greys and deep charcoal — minimalist and modern |
+| **Amber** | Warm tones — great for evening use |
+
+To switch themes: **Settings → Appearance → Theme**
+
+<Aside type="tip">
+Curbox respects your system's dark/light mode preference and automatically adapts all themes. You can override this in **Settings → Appearance → Colour scheme**.
+</Aside>
+
+---
+
+## Typography
+
+You can change the font used throughout the app:
+
+**Settings → Appearance → Font**
+
+Available options:
+- **Default** — System UI sans-serif (fastest, respects your device font)
+- **Lato** — Clean and slightly warm
+- **Inter** — Highly legible at small sizes
+- **Merriweather** — Serif; great for a slower, more deliberate feel
+
+---
+
+## Lock Screen Customization
+
+The lock screen is what users see when they try to open a blocked app. Making it feel intentional — rather than hostile — is important to Curbox's philosophy.
+
+<Steps>
+
+1. Go to **Settings → Lock Screen**.
+
+2. **Message style** — choose from:
+   - *Minimal* — just the app name and timer
+   - *Affirmation* — a rotating set of calming, positive phrases
+   - *Custom* — write your own message (displayed on every lock screen)
+
+3. **Background** — Solid colour (from your theme), soft gradient, or a custom image from your gallery.
+
+4. **Show remaining time** — toggle whether the session countdown is visible. Some users prefer not seeing the exact remaining time to avoid "clock watching."
+
+</Steps>
+
+<Aside type="note">
+Custom lock screen messages support simple variables:
+- `{'{app}'}` — the blocked app's name
+- `{'{time}'}` — your remaining session time
+- `{'{intention}'}` — the intention text you set when starting the session
+
+Example: *"You chose to focus. &#123;app&#125; will be waiting when your &#123;time&#125; is up."*
+</Aside>
+
+---
+
+## Notification Style
+
+Curbox's persistent focus notification can be styled to be as unobtrusive as possible:
+
+**Settings → Notifications → Focus notification style**
+
+- **Compact** — just an icon with remaining time (recommended)
+- **Expanded** — shows your intention text
+- **Minimal** — icon only, no text
+
+---
+
+## Reducing Visual Stimulation Further
+
+For users who want an especially calm experience:
+
+- **Grayscale mode**: Enable under **Settings → Appearance → Grayscale**. This renders the entire Curbox UI in greyscale. It is a powerful technique — a greyscale screen is inherently less addictive.
+- **Reduce motion**: **Settings → Appearance → Reduce motion** — disables all transitions and animations.
+- **High contrast**: **Settings → Appearance → High contrast** — increases text contrast ratios above WCAG AA standards.
+
+All three options can be enabled simultaneously and work independently of Android's system-level accessibility settings.
+
+---
+
+## Next Steps
+
+- [Back to Getting Started →](/getting-started/installation/)
+- [Explore the Blog →](/blog/)
