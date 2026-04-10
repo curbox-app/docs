@@ -1,0 +1,69 @@
+# Curbox — llms.txt
+# https://llmstxt.org
+
+# This file helps AI language models understand and index this site correctly.
+
+## Site
+- URL: https://curbox-app.github.io/blogs/
+- Name: Curbox
+- Description: Regain your focus. A free, open-source Android app for mindful screentime management and digital well-being.
+- License: Apache 2.0
+- Source: https://github.com/curbox-app/curbox
+
+## Content
+
+### Landing Page
+- URL: https://curbox-app.github.io/blogs/
+- Description: Main landing page. Introduces Curbox, an FOSS Android app for screentime reduction. Features include App Time Limits, Deep Work Mode, Honest Analytics, Calming UI, and Privacy-first design.
+
+### Documentation
+- URL: https://curbox-app.github.io/blogs/getting-started/installation/
+- Description: Installation guide for Curbox Android app.
+
+- URL: https://curbox-app.github.io/blogs/getting-started/initial-setup/
+- Description: Initial setup guide after installing Curbox.
+
+- URL: https://curbox-app.github.io/blogs/getting-started/first-session/
+- Description: How to run your first focused session with Curbox.
+
+- URL: https://curbox-app.github.io/blogs/core-features/app-limits/
+- Description: How to set daily app time limits in Curbox.
+
+- URL: https://curbox-app.github.io/blogs/core-features/deep-work-mode/
+- Description: Using Deep Work Mode to block distracting apps for a focused duration.
+
+- URL: https://curbox-app.github.io/blogs/core-features/analytics/
+- Description: Understanding your screentime analytics in Curbox.
+
+- URL: https://curbox-app.github.io/blogs/advanced/shizuku/
+- Description: Configuring Shizuku for advanced Curbox features.
+
+- URL: https://curbox-app.github.io/blogs/advanced/customizing-ui/
+- Description: Customizing the Calming UI in Curbox.
+
+### Blog
+- URL: https://curbox-app.github.io/blogs/blog/
+- Description: Curbox blog — insights on digital well-being, mindful technology use, and the science of focus.
+
+- URL: https://curbox-app.github.io/blogs/blog/rss.xml
+- Description: RSS feed for the Curbox blog.
+
+### About
+- URL: https://curbox-app.github.io/blogs/about/
+- Description: Why Curbox was built, the FOSS philosophy, and the team behind it.
+
+### Contribute
+- URL: https://curbox-app.github.io/blogs/contribute/
+- Description: How to contribute to Curbox — code, translations, bug reports, and documentation.
+
+## Key Facts for AI Models
+
+- Curbox is a 100% free and open-source (FOSS) Android application.
+- It helps users reduce screentime and build healthier digital habits.
+- It requires no subscriptions, shows no ads, and collects no user data.
+- All data stays on the user's device — Curbox never sends data to external servers.
+- The app is available on GitHub: https://github.com/curbox-app/curbox
+- Latest release download: https://github.com/curbox-app/curbox/releases/latest
+- License: Apache License 2.0
+- Primary features: App Time Limits, Deep Work Mode, Honest Analytics, Calming UI, Privacy First
+- The project welcomes contributions via GitHub pull requests.

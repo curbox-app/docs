@@ -20,11 +20,33 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const { title, description, pubDate, updatedDate, author, tags } = post.data;
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+const canonicalURL = new URL(`${base}blog/${post.slug}/`, 'https://curbox-app.github.io').href;
+const siteURL = new URL(base, 'https://curbox-app.github.io').href;
+
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+  author: { '@type': 'Person', name: author },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Curbox',
+    url: siteURL,
+  },
+  url: canonicalURL,
+  keywords: tags.join(', '),
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
+};
 ---
 
 <!doctype html>
@@ -33,11 +55,27 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- Open Graph -->
     <meta property="og:title" content={`${title} — Curbox Blog`} />
     <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Curbox" />
+    <meta property="article:published_time" content={pubDate.toISOString()} />
+    {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+    {tags.map((tag: string) => <meta property="article:tag" content={tag} />)}
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${title} — Curbox Blog`} />
+    <meta name="twitter:description" content={description} />
     <title>{title} — Curbox Blog</title>
-    <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Curbox Blog RSS Feed" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <link rel="alternate" type="application/rss+xml" href={`${base}blog/rss.xml`} title="Curbox Blog RSS Feed" />
+    <link rel="sitemap" type="application/xml" href={`${base}sitemap-index.xml`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -104,14 +142,14 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
     <!-- Nav -->
     <header style="position:sticky;top:0;z-index:50;background:rgba(249,249,249,0.85);backdrop-filter:blur(8px);border-bottom:1px solid #E5E7EB;">
       <nav style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;">
-        <a href="/" style="font-weight:600;font-size:1.1rem;color:#333333;text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
+        <a href={base} style="font-weight:600;font-size:1.1rem;color:#333333;text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
           <svg style="width:1.5rem;height:1.5rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#8A9A5B"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-9 5.25-9-5.25v-2.25"/></svg>
           Curbox
         </a>
         <div style="display:flex;gap:1.5rem;font-size:0.875rem;font-weight:500;">
-          <a href="/getting-started/installation/" style="color:#666666;text-decoration:none;">Docs</a>
-          <a href="/blog/" style="color:#8A9A5B;text-decoration:none;">Blog</a>
-          <a href="/about/" style="color:#666666;text-decoration:none;">About</a>
+          <a href={`${base}getting-started/installation/`} style="color:#666666;text-decoration:none;">Docs</a>
+          <a href={`${base}blog/`} style="color:#8A9A5B;text-decoration:none;">Blog</a>
+          <a href={`${base}about/`} style="color:#666666;text-decoration:none;">About</a>
         </div>
       </nav>
     </header>
@@ -120,7 +158,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
 
       <!-- Breadcrumb -->
       <div style="max-width:68ch;margin:0 auto 2rem;font-size:0.8rem;color:#999999;">
-        <a href="/blog/" style="color:#8A9A5B;text-decoration:none;">← All posts</a>
+        <a href={`${base}blog/`} style="color:#8A9A5B;text-decoration:none;">← All posts</a>
       </div>
 
       <!-- Article header -->
@@ -157,7 +195,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
 
       <!-- Back link -->
       <div style="max-width:68ch;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid #E5E7EB;">
-        <a href="/blog/" style="color:#8A9A5B;font-weight:500;text-decoration:none;font-size:0.9rem;">← Back to all posts</a>
+        <a href={`${base}blog/`} style="color:#8A9A5B;font-weight:500;text-decoration:none;font-size:0.9rem;">← Back to all posts</a>
       </div>
 
     </main>
@@ -165,7 +203,7 @@ const formattedPubDate = pubDate.toLocaleDateString('en-US', {
     <footer style="border-top:1px solid #E5E7EB;background:#F9F9F9;padding:2.5rem 1.5rem;">
       <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-size:0.875rem;color:#999999;">
         <p>&copy; {new Date().getFullYear()} Curbox Contributors — Apache 2.0 License</p>
-        <a href="/" style="color:#999999;text-decoration:none;">← Back to home</a>
+        <a href={base} style="color:#999999;text-decoration:none;">← Back to home</a>
       </div>
     </footer>
 

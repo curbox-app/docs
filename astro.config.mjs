@@ -3,11 +3,14 @@ import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://curbox.app',
+  site: 'https://curbox-app.github.io',
+  base: '/blogs',
   integrations: [
+    sitemap(),
     starlight({
       title: 'Curbox',
       description: 'Regain your focus. A FOSS Android app for screentime reduction and digital well-being.',

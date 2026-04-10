@@ -43,6 +43,50 @@ const benefits = [
 
 const siteTitle = 'Curbox';
 const siteDescription = 'Regain your focus. A free, open-source Android app for mindful screentime management and digital well-being.';
+const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+const canonicalURL = new URL(base, 'https://curbox-app.github.io').href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${canonicalURL}#organization`,
+      name: 'Curbox',
+      url: canonicalURL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${canonicalURL}favicon.svg`,
+      },
+      sameAs: [
+        'https://github.com/curbox-app/curbox',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${canonicalURL}#website`,
+      url: canonicalURL,
+      name: siteTitle,
+      description: siteDescription,
+      publisher: { '@id': `${canonicalURL}#organization` },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Curbox',
+      operatingSystem: 'Android',
+      applicationCategory: 'UtilitiesApplication',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      description: siteDescription,
+      url: canonicalURL,
+      downloadUrl: 'https://github.com/curbox-app/curbox/releases/latest',
+      license: 'https://www.apache.org/licenses/LICENSE-2.0',
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -51,12 +95,27 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={siteDescription} />
-    <meta property="og:title" content={siteTitle} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${siteTitle} — Mindful Screentime for Android`} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={siteTitle} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${siteTitle} — Mindful Screentime for Android`} />
+    <meta name="twitter:description" content={siteDescription} />
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" href={`${base}blog/rss.xml`} title="Curbox Blog RSS Feed" />
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href={`${base}sitemap-index.xml`} />
     <meta name="theme-color" content="#8A9A5B" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <title>{siteTitle} — Mindful Screentime for Android</title>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <!-- Google Fonts: Inter + Merriweather -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -90,7 +149,7 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
     <header class="sticky top-0 z-50 bg-cb-bg/80 backdrop-blur-md border-b border-cb-border">
       <nav class="max-w-layout mx-auto flex items-center justify-between px-6 py-4">
         <!-- Logo wordmark -->
-        <a href="/" class="flex items-center gap-2 font-semibold text-lg text-cb-text no-underline">
+        <a href={base} class="flex items-center gap-2 font-semibold text-lg text-cb-text no-underline">
           <svg class="w-7 h-7 text-cb-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-9 5.25-9-5.25v-2.25" />
           </svg>
@@ -99,10 +158,10 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
 
         <!-- Desktop nav -->
         <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-cb-text-muted list-none">
-          <li><a href="/getting-started/installation/" class="hover:text-cb-accent transition-colors duration-200">Docs</a></li>
-          <li><a href="/blog/" class="hover:text-cb-accent transition-colors duration-200">Blog</a></li>
-          <li><a href="/about/" class="hover:text-cb-accent transition-colors duration-200">About</a></li>
-          <li><a href="/contribute/" class="hover:text-cb-accent transition-colors duration-200">Contribute</a></li>
+          <li><a href={`${base}getting-started/installation/`} class="hover:text-cb-accent transition-colors duration-200">Docs</a></li>
+          <li><a href={`${base}blog/`} class="hover:text-cb-accent transition-colors duration-200">Blog</a></li>
+          <li><a href={`${base}about/`} class="hover:text-cb-accent transition-colors duration-200">About</a></li>
+          <li><a href={`${base}contribute/`} class="hover:text-cb-accent transition-colors duration-200">Contribute</a></li>
         </ul>
 
         <!-- CTA button -->
@@ -158,7 +217,7 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
               Download the App
             </a>
             <a
-              href="/getting-started/installation/"
+              href={`${base}getting-started/installation/`}
               class="inline-flex items-center gap-2 bg-white border border-cb-border text-cb-text font-semibold px-7 py-3.5 rounded-xl shadow-sm hover:border-cb-accent hover:text-cb-accent transition-colors duration-200 no-underline text-base"
             >
               <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -235,7 +294,7 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
                 <p class="text-cb-text-muted text-sm leading-relaxed">Step-by-step guides from installation to advanced Shizuku configuration.</p>
               </div>
               <a
-                href="/getting-started/installation/"
+              href={`${base}getting-started/installation/`}
                 class="mt-auto inline-flex items-center gap-1.5 text-cb-accent font-semibold text-sm hover:underline no-underline"
                 aria-label="Read the Curbox documentation"
               >
@@ -258,7 +317,7 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
                 <p class="text-cb-text-muted text-sm leading-relaxed">Insights on digital well-being, dopamine detoxes, and the science of focus.</p>
               </div>
               <a
-                href="/blog/"
+              href={`${base}blog/`}
                 class="mt-auto inline-flex items-center gap-1.5 text-cb-accent font-semibold text-sm hover:underline no-underline"
                 aria-label="Explore the Curbox blog"
               >
@@ -283,16 +342,16 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
           <a href="https://www.apache.org/licenses/LICENSE-2.0" class="hover:text-cb-accent transition-colors duration-200">Apache 2.0 License</a>
         </p>
         <nav class="flex items-center gap-5" aria-label="Footer navigation">
-          <a href="/getting-started/installation/" class="hover:text-cb-accent transition-colors duration-200">Docs</a>
-          <a href="/blog/" class="hover:text-cb-accent transition-colors duration-200">Blog</a>
-          <a href="/about/" class="hover:text-cb-accent transition-colors duration-200">About</a>
-          <a href="/contribute/" class="hover:text-cb-accent transition-colors duration-200">Contribute</a>
+          <a href={`${base}getting-started/installation/`} class="hover:text-cb-accent transition-colors duration-200">Docs</a>
+          <a href={`${base}blog/`} class="hover:text-cb-accent transition-colors duration-200">Blog</a>
+          <a href={`${base}about/`} class="hover:text-cb-accent transition-colors duration-200">About</a>
+          <a href={`${base}contribute/`} class="hover:text-cb-accent transition-colors duration-200">Contribute</a>
           <a href="https://github.com/curbox-app/curbox" class="hover:text-cb-accent transition-colors duration-200" aria-label="Curbox on GitHub">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.165c-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.419-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.51 11.51 0 0 1 3.003-.404c1.02.005 2.046.137 3.003.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12Z"/>
             </svg>
           </a>
-          <a href="/blog/rss.xml" class="hover:text-cb-accent transition-colors duration-200" aria-label="Subscribe via RSS">
+          <a href={`${base}blog/rss.xml`} class="hover:text-cb-accent transition-colors duration-200" aria-label="Subscribe via RSS">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
             </svg>
