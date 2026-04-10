@@ -4,7 +4,9 @@
  * Minimalist, calming design using Tailwind CSS.
  * Designed to lower cognitive load and guide visitors toward docs or download.
  */
-import { Image } from 'astro:assets';
+
+/** Update this when releasing a new version. */
+const LATEST_VERSION = 'v1.2.0';
 
 const benefits = [
   {
@@ -169,7 +171,7 @@ const siteDescription = 'Regain your focus. A free, open-source Android app for 
           <!-- Social proof / release tag -->
           <p class="mt-8 text-sm text-cb-text-subtle">
             Latest release:
-            <a href="https://github.com/curbox-app/curbox/releases" class="text-cb-accent hover:underline">v1.2.0</a>
+            <a href="https://github.com/curbox-app/curbox/releases" class="text-cb-accent hover:underline">{LATEST_VERSION}</a>
             &mdash; Apache 2.0 License
           </p>
         </div>

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "allowJs": true,
+    // React JSX settings are needed for @astrojs/react (used by MDX interactive components)
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   }
