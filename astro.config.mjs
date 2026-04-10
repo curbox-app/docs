@@ -38,16 +38,7 @@ export default defineConfig({
         {
           label: 'Core Features',
           items: [
-            { label: 'Setting App Limits', slug: 'core-features/app-limits' },
-            { label: "Using 'Deep Work' Mode", slug: 'core-features/deep-work-mode' },
-            { label: 'Understanding Your Analytics', slug: 'core-features/analytics' },
-          ],
-        },
-        {
-          label: 'Advanced Guides',
-          items: [
-            { label: 'Configuring Shizuku for Curbox', slug: 'advanced/shizuku' },
-            { label: 'Customizing the Calming UI', slug: 'advanced/customizing-ui' },
+            { label: 'App Blocker', slug: 'core-features/app-limits' },
           ],
         },
       ],

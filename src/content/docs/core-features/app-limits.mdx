@@ -1,95 +1,62 @@
 ---
-title: Setting App Limits
-description: How to set daily time limits on individual apps or app categories in Curbox.
+title: The App Blocker
+description: How to use curbox to block apps
 sidebar:
   order: 1
 ---
 
 import { Steps, Aside, Code } from '@astrojs/starlight/components';
 
-App Limits let you set a maximum daily allowance for any app on your device. When you approach or hit the limit, Curbox gives you a calm, non-punishing nudge.
 
 ---
 
-## How Limits Work
+## How App blocker works
 
-Curbox tracks real *foreground* usage for each app — time spent with the app actually on screen. Background activity (music, navigation) is not counted.
+Curbox tracks what app you're using in real time and decides if the app needs to be blocked or allows according the configurations you set.
 
-Limits reset at **midnight local time** by default. You can change the reset time in **Settings → Limits → Daily reset time**.
 
----
+1. ** Create a new app blocker group **
+  To create a new app group of blocked apps, Select Reducers and you'll be presented with a list of options, seledct app pause and then press the add button on bottom right.
 
-## Creating a Limit
+2. ** Select Apps **
+  You'll be presented with a varied range of options, all the options you select here would be applied to the entire range of apps selected.
 
-<Steps>
+3. ** Blocking Configuration **
+  Curbox provides two app blocking type, prompty the usage based and time based
+  
+  The usage based app blocking blocks apps on the basis of how long you use an app. For example "Block instagram if i use it more than 1 hour a day"
+  The time based app blocking allows apps to be used only between certain time intervals during a day. Like "Let me use instagram between 7pm to 9pm on Sunday and Saturday"
 
-1. **Go to** **Curbox → App Limits** (the clock icon in the bottom nav).
+4. ** Press the configure settings button ** to set the limits (if you chose usage based blocking) or time ranges (if you selected time based blocking) for each individual day.
 
-2. **Tap the `+` button** in the top-right corner.
 
-3. **Select an app** from the list. Apps are sorted by your recent usage, making it easy to find your biggest time-sinks.
+## The warning screen
+In curbox the screen that appears when you press a blocked app anytime when outside the set time limit or app usage limit.
+For example if you've set a limit of 1 hour using reddit, exceed it. You'll be shown the warning screen.
 
-4. **Set the daily limit**
+This is the screen that decides whether you should be allowed to pass or not.
 
-   Drag the dial or type a duration. You can set limits as short as 5 minutes or as long as 6 hours.
+The warning screen configuration might look scary at first but believe me its very easy yet extremely powerful
+You can setup here what message(called the warning message) you'd like to appear when you press an app from that group.
 
-5. **Choose a warning threshold** (optional)
+Then you can specify on what basis you'll be allowed to unlock the app by choosing the unlock behaviour option.
 
-   You'll receive a quiet notification when this percentage of your limit is used. Defaults to 80%.
+Curbox provides a number of unlock behaviours.
 
-6. **Tap "Save"**.
+Behaviours that completely block the app 
+- Skip warning screen: This method will replicate what the focus mode does, simply press back. don't show anything or let user proceed. This wont show the custom warning message you set. 
+- Disable Unlcoking entirely: This method will show you the warning message you've set but not let you proceed
 
-</Steps>
+Behaviours that allow to extend app usage once the set configuration has been exceeded. 
+- User Selects unlock time: This would show a time picker on the warning screen that lets you specify how long more you want to use the app. 
+- Fixed unlock time: You preselect how long the time extend would last.
 
-<Aside type="tip">
-Start with limits that are slightly above your current usage — for example, if you spend 2 hours on Instagram daily, start with a 1h 45m limit. Aggressive limits set on day one are easy to override. Gradual reduction is more effective.
-</Aside>
+- Qr/Bar code: You can setup a system where scanning different qr/bar codes let you use extend the app usage for different time. For example i can set it up let me use the app for 10 mins if i scan the code on my sunscreen, or 20 mins if i scan the code on a pack of flour. You can generate and print new qr codes too.
+- Unlock requires typing a sentence: This forces you to repeat a specific sentence to extend the app usage. eg, requiring to type: "I'm a loser for giving up my promise to lock in" to extend the app for x hours.
+- Unlock requires stating intent: This mechanism asks user why they need to extend the app usage before letting them in. This written intent would be further on logged onto reducers>logged intents. The intent you type would be displayed as an overlay over your app the entire time you use it during the selected time reminding you your original intention.
 
----
 
-## Category Limits
-
-Instead of limiting individual apps, you can limit an entire *category* — for example, all apps tagged as "Social" or "Entertainment".
-
-Category limits apply to the combined usage across all apps in that category.
-
-<Code
-  code={`Category: Social (4 apps)
-  ├── Instagram
-  ├── Twitter / X
-  ├── TikTok
-  └── Reddit
-
-Daily limit: 1 hour total across all 4 apps`}
-  lang="text"
-  title="Example: Social Category Limit"
-/>
+If you are someone that impulsively decides to extend an app usage, the wait before unlocking feature basically FORCES YOU TO WAIT for set time before letting you in. This prompts the user to read the intented warning message.
+The vibrate and max brightness on warning option basically wakes you up from the zombie state you get into when scrolling addicitve apps to let you make a proper decision about extending app usage.
 
 ---
-
-## What Happens When You Hit a Limit?
-
-By default:
-
-1. At **80%** of your limit → a quiet notification ("20 minutes left on YouTube").
-2. At **100%** → the app shows the calm lock screen with a message and the option to snooze for 15 minutes (once per day, per app).
-
-The snooze option exists because Curbox is not a prison. It respects your autonomy while making the choice *intentional* rather than mindless.
-
----
-
-## Pausing and Deleting Limits
-
-- **Pause** a limit temporarily (e.g., for a weekend) via the long-press context menu on any limit card.
-- **Delete** a limit by swiping it left in the App Limits list.
-
-<Aside type="note">
-Paused limits are shown greyed-out with a "Paused" badge. Usage during a pause is still tracked in your analytics — it is simply not enforced.
-</Aside>
-
----
-
-## Next Steps
-
-- [Using 'Deep Work' Mode →](/core-features/deep-work-mode/)
-- [Understanding Your Analytics →](/core-features/analytics/)
