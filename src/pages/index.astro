@@ -43,7 +43,7 @@ const benefits = [
 
 const siteTitle = 'Curbox';
 const siteDescription = 'Regain your focus. A free, open-source Android app for mindful screentime management and digital well-being.';
-const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+import { base } from '../utils/base-url';
 const canonicalURL = new URL(base, 'https://curbox-app.github.io').href;
 
 const jsonLd = {

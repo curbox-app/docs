@@ -4,7 +4,7 @@
  */
 const pageTitle = 'Contribute to Curbox — Join the FOSS Community';
 const pageDesc = 'Help build Curbox: translate the app, submit bug reports, write code, or donate.';
-const base = import.meta.env.BASE_URL.replace(/\/$/, "") + "/";
+import { base } from '../../utils/base-url';
 const canonicalURL = new URL(`${base}contribute/`, 'https://curbox-app.github.io').href;
 ---
 
