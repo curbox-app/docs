@@ -1,0 +1,125 @@
+---
+title: View Blocker
+description: Surgically remove specific elements from any app — comments, recommendation panels, suggested videos, and more.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside, Code } from '@astrojs/starlight/components';
+
+
+The View Blocker is Curbox's most surgical tool. Instead of blocking an entire app, it targets specific elements within an app and hides them — or navigates away from them — while leaving the rest of the app fully functional.
+
+Common uses include hiding YouTube's suggested video panel, suppressing comment sections, removing sidebar recommendations, and blocking any other UI element that regularly pulls your attention off your original task.
+
+
+## Built-in Rules
+
+Curbox ships with a growing library of pre-written rules for popular apps. These rules are tested and maintained by the Curbox team. You can enable or disable each one individually.
+
+To see and manage built-in rules:
+
+<Steps>
+1. Open Curbox and tap **Reducers**.
+2. Find the **View Blocker** card and tap it.
+3. Tap the **Built-in Rules** tab.
+4. Toggle any rule on or off.
+</Steps>
+
+<Aside type="note">
+Built-in rules are updated when new versions of Curbox are released. If a rule stops working after an app update, the fix will usually arrive in the next Curbox release.
+</Aside>
+
+
+## Custom Rules
+
+If you want to block something not covered by built-in rules, you can write your own rule using Curbox's flexible rule syntax.
+
+
+### Rule Syntax Overview
+
+Rules are written as space-separated `key:value` pairs. Here is the minimum required to identify a target:
+
+<Code
+  code={`pkg:com.example.app id:some_view_id`}
+  lang="text"
+  title="Minimal rule"
+/>
+
+**Required key:**
+- `pkg:` — The package name of the target app (e.g., `com.google.android.youtube`)
+
+**Element identifiers** (use at least one):
+- `id:` — The exact View ID of the element
+- `class:` — The element's class name (e.g., `android.widget.TextView`)
+- `text:` — The element's exact text content
+- `desc:` — The element's content description (for accessibility labels); separate multiple values with commas
+- `path:` — The hierarchical path through the view tree (e.g., `path:FrameLayout[0]>RecyclerView[0]>ViewGroup[1]`)
+
+**Fuzzy matching:**
+- `textcontains:` — Match if the element's text *contains* this string
+- `desccontains:` — Match if the description *contains* this string
+- `text~:` — Regular expression match against the element's text
+- `desc~:` — Regular expression match against the description
+
+**Actions:**
+- `action:overlay` *(default)* — Place a coloured rectangle over the element
+- `action:back` — Perform a system back-press to navigate away
+- `color:#RRGGBB` — Set the overlay colour (default: `#FFFFFF` white)
+- `blocktouches:true` *(default)* — Intercept taps on the covered area
+- `max:N` — Only block the first N matches on the current screen
+
+**Conditions:**
+- `+id:some_id` — Only fire this rule if `some_id` is present on screen
+- `-id:some_id` — Only fire this rule if `some_id` is absent from screen
+
+
+### Writing Your First Custom Rule
+
+<Steps>
+1. **Find the element's identifier**
+   Enable Android's built-in Layout Inspector (via developer options) or use the Accessibility Inspector to find the View ID or content description of the element you want to block.
+
+2. **Write the rule**
+   Open Curbox → **Reducers** → **View Blocker** → **Custom Rules** → **Add Rule**. Type your rule into the text field.
+
+3. **Test it**
+   Save the rule, then open the target app. If the element disappears or is covered, the rule is working. If not, double-check the package name and element identifier.
+
+4. **Refine with conditions**
+   If the element ID appears on multiple screens but you only want to block it in one place, add a `+` or `-` condition to make the rule more precise.
+</Steps>
+
+
+### Complex Rule Examples
+
+Block the YouTube Shorts tab in the bottom navigation bar:
+<Code
+  code={`pkg:com.google.android.youtube id:navigation_bar_item_icon_view desc:Shorts action:back max:1`}
+  lang="text"
+  title="Block YouTube Shorts tab"
+/>
+
+Cover a "Recommended for You" section only when the home feed is visible:
+<Code
+  code={`pkg:com.example.app id:recommendations_container color:#000000 +id:home_feed_root`}
+  lang="text"
+  title="Conditional block"
+/>
+
+<Aside type="tip">
+Values containing spaces must be wrapped in double quotes: `text:"Recommended for you"`. Keys are case-insensitive, so `PKG:` and `pkg:` are identical.
+</Aside>
+
+
+## Enabling the View Blocker
+
+The View Blocker is disabled by default. To turn it on:
+
+<Steps>
+1. Go to **Reducers → View Blocker**.
+2. Toggle the main **Enable View Blocker** switch.
+3. Enable the individual built-in rules or add custom rules you want active.
+</Steps>
+
+The View Blocker runs as part of Curbox's accessibility service and does not require any additional permissions beyond those granted during initial setup.

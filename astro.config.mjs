@@ -39,6 +39,13 @@ export default defineConfig({
           label: 'Core Features',
           items: [
             { label: 'App Blocker', slug: 'core-features/app-limits' },
+            { label: 'Focus Mode', slug: 'core-features/focus-mode' },
+            { label: 'Reel Blocker', slug: 'core-features/reel-blocker' },
+            { label: 'Keyword Blocker', slug: 'core-features/keyword-blocker' },
+            { label: 'Grayscale Filter', slug: 'core-features/grayscale' },
+            { label: 'Mindful Messages', slug: 'core-features/mindful-messages' },
+            { label: 'View Blocker', slug: 'core-features/view-blocker' },
+            { label: 'Usage Stats', slug: 'core-features/usage-stats' },
           ],
         },
       ],
