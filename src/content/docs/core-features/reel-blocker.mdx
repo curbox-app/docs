@@ -1,0 +1,84 @@
+---
+title: Reel Blocker
+description: Stop infinite short-video feeds from hijacking your attention. Curbox can block Reels, Shorts, and TikTok-style feeds entirely.
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+
+Short-form video feeds are engineered to be as addictive as possible. Curbox's Reel Blocker detects when you have scrolled into one of these feeds and removes it from your screen before the dopamine loop can take hold.
+
+
+## Supported Apps
+
+Curbox ships with built-in detection for:
+
+- **Instagram Reels**
+- **YouTube Shorts**
+- **Facebook Reels**
+
+Support for more platforms is continuously added. If your app is not listed, you can still use the View Blocker to create a custom rule for it.
+
+
+## Blocking Methods
+
+The Reel Blocker gives you three distinct ways to restrict short-video content, so you can find the level of control that works best for you.
+
+### By Time of Day
+
+Block the reel feed only during specific hours. For example, you could allow Shorts between 8 PM and 9 PM on weekdays but block them at all other times. You can set a single everyday schedule or define different windows for each day of the week.
+
+### By Usage Time
+
+Set a daily time budget for reel content. Once you have spent that many minutes watching reels, the feed is blocked for the rest of the day. You can set one uniform limit for every day or different limits per day of the week.
+
+### By Reel Count
+
+This is the most unusual and arguably most effective option. Curbox counts individual reels as you scroll past them. Once you hit your daily limit (say, 10 reels), the feed is blocked. This makes the cost of each swipe very concrete — you only get a certain number before your allowance runs out.
+
+
+## Setting Up the Reel Blocker
+
+<Steps>
+1. **Navigate to Reducers**
+   Open Curbox and tap **Reducers** in the bottom navigation bar.
+
+2. **Open Reel Blocker**
+   Find the **Reel Blocker** card and tap it to open the configuration screen.
+
+3. **Enable the blocker**
+   Toggle the main switch at the top of the screen to turn the Reel Blocker on.
+
+4. **Pick your blocking method**
+   Select one of the three tabs: **Timed**, **Usage**, or **Reel Count**.
+
+5. **Configure your limit**
+   - For **Timed**: tap the days you want rules on and set the blocked time windows.
+   - For **Usage**: enter your daily time budget in minutes. Toggle "Same limit every day" off to set per-day limits.
+   - For **Reel Count**: enter the number of reels you are allowed per day.
+
+6. **Save**
+   Tap **Save**. The blocker is now active.
+</Steps>
+
+<Aside type="tip">
+The Reel Count method is excellent for people who find time-based limits easy to game by "just watching one more." Counting individual scrolls makes the behaviour visible and discrete.
+</Aside>
+
+
+## What Happens When You Hit the Limit
+
+When your limit is reached, Curbox overlays the reel feed with a block screen. The same customisable warning screen used by the App Blocker appears, so you can set a personal message, require a QR scan, or apply any other unlock challenge you have configured.
+
+See the [App Blocker](/blogs/core-features/app-limits) page for a full explanation of all warning screen options.
+
+
+## The Reel Counter Overlay
+
+Even if you choose not to block reels outright, you can enable the **Reel Counter** separately. This is a small, unobtrusive overlay that appears while you are watching reels and shows you a running count for the day.
+
+Seeing the number tick up in real time is surprisingly effective at making you aware of how long you have been scrolling — and giving you a natural moment to put the phone down.
+
+To enable it, go to **Reducers → Anti-Stimulants → Reel Counter** and flip the switch.

@@ -1,0 +1,94 @@
+---
+title: Focus Mode
+description: Lock yourself into deep work with Curbox's powerful Focus Mode — manual sessions and auto-scheduled blocks.
+sidebar:
+  order: 2
+---
+
+import { Steps, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+Focus Mode is the heart of Curbox. It lets you carve out a distraction-free window of time where all your chosen apps are silently blocked, and your device becomes a focused tool rather than a source of endless interruptions.
+
+There are two flavours: **Manual Focus**, which you start on demand, and **Auto Focus**, which fires automatically on a schedule you set once and forget.
+
+
+## How Focus Mode Works
+
+When a Focus session is active, Curbox watches every app you open. The moment you tap into a blocked app, Curbox instantly kicks you back — no warning screen, no delay, just a firm redirect so that the distraction never even gets a foothold.
+
+A persistent notification sits in your notification shade showing exactly how many minutes remain, so you always know where you stand without having to open Curbox.
+
+
+## Focus Groups
+
+Both modes are built around the idea of a **Focus Group**: a named collection of apps that should be paused together. You create a group once and then reuse it across as many sessions as you like.
+
+Each group also carries a single setting: whether you can end the session early. If you flip that option off, Curbox will refuse to let you stop the session before the timer runs out.
+
+<Aside type="tip">
+Give your groups descriptive names like "Deep Work," "Study," or "Family Time" so you can pick the right one at a glance.
+</Aside>
+
+
+## Manual Focus
+
+Manual Focus is for those moments when you decide right now that you need to concentrate. You pick a duration, choose a group, and tap Start.
+
+<Steps>
+1. **Open the Focus screen**
+   Tap the **Focus** icon in the bottom navigation bar.
+
+2. **Set your duration**
+   Drag the time slider or tap one of the quick-select chips (15 min, 30 min, 60 min, 90 min). You can set any length you want.
+
+3. **Choose or create a group**
+   Select an existing group from the list, or tap **Create New Group** and follow the prompts to name it and pick apps.
+
+4. **Start your session**
+   Tap **Start Focus**. Curbox minimises itself and the countdown notification appears. Every blocked app is now paused for the duration you chose.
+
+5. **Ending early (if allowed)**
+   If the group was created with early exit enabled, you can return to Curbox and tap **Stop Focus** at any time. If early exit is disabled, you will need to wait until the timer finishes.
+</Steps>
+
+
+## Auto Focus
+
+Auto Focus runs on a recurring schedule. Once configured, a session starts automatically at the time you chose — every day, or only on specific days — without you having to remember to start it.
+
+<Steps>
+1. **Open the Focus screen**
+   Tap the **Focus** icon in the bottom navigation bar.
+
+2. **Switch to the Auto tab**
+   Tap the **Auto Focus** tab at the top of the screen.
+
+3. **Create an Auto Focus group**
+   Tap the **Add** button. Give the group a name and select the apps to block.
+
+4. **Set the schedule**
+   Choose the days of the week you want the session to run, then set the start time and duration.
+
+5. **Save and activate**
+   Tap **Save**. Curbox schedules the session. On the chosen days, it will start automatically at the right time.
+</Steps>
+
+<Aside type="note">
+Auto Focus sessions use Android's alarm system. On some devices with aggressive battery optimisation, you may need to allow Curbox to run unrestricted in the background for schedules to fire reliably. This is covered in the Initial Setup guide.
+</Aside>
+
+
+## Choosing the Right Duration
+
+<Tabs>
+  <TabItem label="Beginner">
+    Start with 25-minute sessions. This is the classic "Pomodoro" length and is widely recommended for people just building a focus habit. It feels achievable without being overwhelming.
+  </TabItem>
+  <TabItem label="Intermediate">
+    Work up to 45–60 minute blocks once 25 minutes feels easy. Take a 10-minute break between sessions.
+  </TabItem>
+  <TabItem label="Deep Work">
+    Research suggests 90 minutes is the upper limit of sustained, high-quality concentration for most people. Reserve these for your most important tasks.
+  </TabItem>
+</Tabs>
