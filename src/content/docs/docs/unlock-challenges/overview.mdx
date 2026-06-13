@@ -1,0 +1,81 @@
+---
+title: Unlock Challenges
+description: How to choose what happens when you try to bypass a block in Curbox
+sidebar:
+  order: 1
+---
+
+import { Steps, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+When a block triggers in Curbox, a pause screen appears. **Unlock Challenges** control what happens on that screen — whether you can get past it, how hard that is, and how long it takes.
+
+You set the challenge inside each App Pause or Short-Form Video group by tapping **Configure Warning Screen**.
+
+
+## Choosing a Challenge Type
+
+The **Warning Screen Configuration** screen has one main setting: the **Unlock Challenge** dropdown. There are three options.
+
+![The Warning Screen Configuration screen showing the Unlock Challenge dropdown open with three options: Never Unlock, Require effort to unlock with a RECOMMENDED badge, and Requires no effort to unlock](../../assets/unlock-challenge-dropdown.png)
+*Require effort to unlock is recommended — the RECOMMENDED badge confirms it.*
+
+<Aside type="tip">
+**Require effort to unlock** is the recommended choice for most people. Adding a small task breaks the automatic habit loop and gives your brain a moment to make a real decision.
+</Aside>
+
+<Tabs>
+  <TabItem label="Never Unlock">
+    **Never Unlock** turns the block into a total lockdown. The pause screen shows no way past it.
+
+    Use this when you want to make an app completely off-limits with no exceptions — no loopholes, no "just this once."
+  </TabItem>
+  <TabItem label="Require Effort">
+    **Require effort to unlock** adds a task you must complete before the proceed button appears. There are three effort types to choose from:
+
+    - **QR or Barcode Scan** — you must scan a specific QR code you set up in advance. Putting the code on a shelf in another room makes it genuinely inconvenient.
+    - **Type a Sentence** — you must type a sentence exactly as written. The deliberate act of typing creates a natural pause.
+    - **State Your Intent** — you must type what you plan to do in the app. Your reason is saved so you can review it later.
+  </TabItem>
+  <TabItem label="No Effort">
+    **Requires no effort to unlock** makes you wait before the proceed button appears, but no task is required.
+
+    Two timing options are available:
+
+    - **Fixed time** — the wait is always the same number of seconds.
+    - **Dynamic time** — the wait changes each time, so you cannot predict how long it will be.
+  </TabItem>
+</Tabs>
+
+
+## Proceed Limits
+
+You can cap how many times you are allowed to proceed through a block within a given time window. Once you hit the cap, the proceed button disappears until the window resets.
+
+This setting is inside **Configure Warning Screen** as well.
+
+
+## The Delay Timer
+
+Whatever challenge type you choose, you can add a countdown before the challenge even appears. During the countdown, your screen brightens and your phone vibrates — a physical reminder that you are about to make a choice.
+
+<Aside type="tip">
+Even a 10 second delay is often enough. That brief pause interrupts autopilot and gives you the chance to ask whether you really want to open the app.
+</Aside>
+
+
+## Where to Set This Up
+
+<Steps>
+1. **Open the feature you want to configure**
+   Go to **App Pause** or **Short-Form Video Content** and tap the group you want to edit.
+
+2. **Tap Configure Warning Screen**
+   This opens **Warning Screen Configuration**.
+
+3. **Open the Unlock Challenge dropdown**
+   Tap the dropdown and choose your challenge type.
+
+4. **Save**
+   Tap **Done**. Your challenge is active the next time that block triggers.
+</Steps>

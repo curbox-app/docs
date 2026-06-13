@@ -1,0 +1,62 @@
+---
+title: Keywords and Websites
+description: How to block specific websites and URLs across your browsers
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+
+**Keyword Blocker** watches the address bar in your browser. The moment you land on a page whose URL contains a word you have blocked, Curbox steps in with a pause screen.
+
+
+## Supported Browsers
+
+Keyword Blocker works in these browsers:
+
+- Google Chrome
+- Brave
+- Firefox
+- Firefox F-Droid
+- Opera
+- Cromite
+- Vanadium (GrapheneOS)
+
+<Aside type="note">
+Keyword Blocker only works in the browsers listed above. If you use a different browser, the blocking will not apply there. Consider adding that browser to **App Pause** instead.
+</Aside>
+
+
+## Creating a Keyword Group
+
+![The Keyword Blocker screen showing an empty state with No keyword groups yet message and a + button in the corner](../../../assets/keyword-blocker-screen.png)
+*Tap the + button to create your first keyword group.*
+
+<Steps>
+1. **Open Keyword Blocker**
+   Tap **Reducers**, then tap **Keywords And Websites**.
+
+2. **Tap the + button**
+   The **+** button is in the bottom right corner.
+
+3. **Enter a name**
+   Give your group a name, like "Social Media Sites" or "News."
+
+4. **Add keywords**
+   Type the words or URL fragments you want to block. One keyword per entry.
+
+   Examples:
+   - `reddit` blocks any URL that contains "reddit" — so `reddit.com`, `old.reddit.com`, and anything else with that word
+   - `youtube.com/shorts` blocks only the Shorts section of YouTube, leaving the rest of the site open
+
+5. **Configure the warning screen** (optional)
+   Tap **Configure Warning Screen** to choose what happens when someone visits a blocked URL. See [Unlock Challenges](BASE_URL/unlock-challenges/overview).
+
+6. **Save**
+   Tap **Done**. The group is active immediately.
+</Steps>
+
+<Aside type="tip">
+Start broad, then narrow down if needed. Blocking just `instagram` is usually enough — you rarely need to list every Instagram URL pattern.
+</Aside>

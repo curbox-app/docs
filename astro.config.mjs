@@ -30,22 +30,40 @@ export default defineConfig({
         {
           label: 'Getting Started',
           items: [
-            { label: 'Installation', slug: 'getting-started/installation' },
-            { label: 'Initial Setup', slug: 'getting-started/initial-setup' },
-            { label: 'Your First Focused Session', slug: 'getting-started/first-session' },
+            { label: 'What Is Curbox', slug: 'docs/getting-started/what-is-curbox' },
+            { label: 'Set Up Curbox', slug: 'docs/getting-started/setup' },
           ],
         },
         {
-          label: 'Core Features',
+          label: 'Focus',
           items: [
-            { label: 'App Blocker', slug: 'core-features/app-limits' },
-            { label: 'Focus Mode', slug: 'core-features/focus-mode' },
-            { label: 'Reel Blocker', slug: 'core-features/reel-blocker' },
-            { label: 'Keyword Blocker', slug: 'core-features/keyword-blocker' },
-            { label: 'Grayscale Filter', slug: 'core-features/grayscale' },
-            { label: 'Mindful Messages', slug: 'core-features/mindful-messages' },
-            { label: 'View Blocker', slug: 'core-features/view-blocker' },
-            { label: 'Usage Stats', slug: 'core-features/usage-stats' },
+            { label: 'Focus Mode', slug: 'docs/focus/focus-mode' },
+          ],
+        },
+        {
+          label: 'Reducers',
+          items: [
+            { label: 'Overview', slug: 'docs/reducers/overview' },
+            { label: 'App Pause', slug: 'docs/reducers/app-pause' },
+            { label: 'Short-Form Video Content', slug: 'docs/reducers/short-form-video' },
+            { label: 'Keywords and Websites', slug: 'docs/reducers/keyword-blocker' },
+            { label: 'Hide UI Elements', slug: 'docs/reducers/hide-ui-elements' },
+            { label: 'Auto DND', slug: 'docs/reducers/auto-dnd' },
+            { label: 'Mindful Messages', slug: 'docs/reducers/mindful-messages' },
+            { label: 'Short-Form Video Counter', slug: 'docs/reducers/video-counter' },
+            { label: 'Grayscale Filter', slug: 'docs/reducers/grayscale' },
+          ],
+        },
+        {
+          label: 'Unlock Challenges',
+          items: [
+            { label: 'Overview', slug: 'docs/unlock-challenges/overview' },
+          ],
+        },
+        {
+          label: 'Usage',
+          items: [
+            { label: 'Usage Stats', slug: 'docs/usage/usage-stats' },
           ],
         },
       ],
