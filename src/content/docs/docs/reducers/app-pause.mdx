@@ -10,6 +10,11 @@ import { Steps, Aside } from '@astrojs/starlight/components';
 
 **App Pause** lets you set limits on any app. When you hit your limit, Curbox shows a pause screen. You decide what happens on that screen — whether you can proceed, how long for, and what effort it takes to get through.
 
+<Aside type="tip">
+The main difference is that Focus Mode is designed to quickly block apps for a specific duration, whereas App Pause is intended for running automated daily schedules.
+</Aside>
+
+
 
 ## Blocking Modes
 
@@ -18,7 +23,8 @@ When you create an App Pause group, you choose one of two blocking modes.
 | Mode | How it works |
 |---|---|
 | **Usage Based** | Tracks how long you use the app each day. Blocks when you hit your daily limit. |
-| **Time Based** | Blocks the app during a specific time window, like 10 PM to 7 AM every night. |
+| **Time Based** | Allow apps the app to be used between only specific time window, like 10 PM to 7 AM every night. |
+| **On each open** | Block the app each time you open it irrepective of time or usage. |
 
 
 ## Creating a Group
@@ -40,9 +46,8 @@ When you create an App Pause group, you choose one of two blocking modes.
    Tap **Select Apps** and choose the apps you want to include in this group.
 
 5. **Choose a blocking mode**
-   Select **Usage Based** or **Time Based**.
 
-6. **Set your schedule** (optional)
+6. **Set your schedule**:
    Tap **Configure Allowed Schedule** to set which hours or days this limit is active. For example, you could allow the app in the evenings but block it during work hours.
 
 7. **Configure the warning screen** (optional)
@@ -51,6 +56,11 @@ When you create an App Pause group, you choose one of two blocking modes.
 8. **Tap Done**
    Your group is saved and active immediately.
 </Steps>
+
+<Aside type="caution">
+The app can't cross midnight in a single schedule for time based block. For an overnight block like 11 PM to 2 AM, just make two separate blocks: 11 PM to 12 AM, and 12 AM to 2 AM.
+</Aside>
+
 
 <Aside type="tip">
 Start with **Usage Based** if you are not sure which mode to pick. Check the **Usage** tab first to see your current daily average, then set your limit a little below that. Working toward a realistic target is much easier than starting too strict.

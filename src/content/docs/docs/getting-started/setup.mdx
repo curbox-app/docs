@@ -13,15 +13,49 @@ Curbox needs a few special permissions to do its job. This page walks you throug
 
 ## Install the App
 
-Download the latest `.apk` file from the Curbox releases page and open it to install. Android may ask you to allow installs from unknown sources — this is normal for apps outside the Play Store.
+Use the fdroid app (not website please, takes longer to setup) to install curbox.
 
+<Aside type="danger">
+Never download curbox from anywhere except the [official github releases](https://github.com/nethical6/curbox) or [fdroid](https://f-droid.org/). It uses extremely sensitive permissions to operate and may lead to complete takeover of your phone and all data by hackers remotely.
+</Aside>
+
+## Play Console Warnings and virus flags
+Honestly big corps just don't like curbox because it destroys their business.
+Your phone's security is just panicking and flagging the app as a virus because it needs deep control over your phone to block other apps. But it's actually completely safe for two main reasons: 
+[Open source](https://en.wikipedia.org/wiki/Open_source)
+first, the app has an "open kitchen" policy where its code is totally public, meaning tech experts all over the world are constantly checking it to make sure the creator isn't sneaking in anything shady. 
+
+Never connects to internet
+Second, and most importantly, the app literally does not have the ability to connect to the internet. Because your phone physically locks it out from going online, it is 100% impossible for it to spy on you or send your personal data anywhere, so your stuff is completely safe.
+
+Here's how to temporarily turn off play protect: 
+1. **Open the Play Store:**
+Launch the **Google Play Store** app on the Android phone.
+
+2. **Tap the profile icon:**
+Tap the profile picture or initial in the top right corner of the screen.
+
+3. **Select Play Protect:**
+Find and tap on **Play Protect** in the menu that pops up.
+
+4. **Open Settings:**
+Tap the gear icon (Settings) in the top right corner of the Play Protect screen.
+
+5. **Turn off scanning:** This stops the virus warnings.
+Toggle off the switch that says **Scan apps with Play Protect**.
+
+6. **Confirm the change:**
+Tap **Turn off** on the popup window to confirm. (The phone might ask for the PIN or fingerprint here).
+
+Once they've installed Curbox, they can follow these exact same steps to turn the toggle back on so their phone stays protected against actual shady apps.
+Most of the other app blockers both connect to the internet and are closed source btw leaving you to blindly trust them. We atleast are honest about what we make!
 
 ## Grant Permissions
 
-When you first open Curbox, an onboarding screen guides you through five permissions. You can grant them one by one, or use Shizuku to grant them all automatically.
+When you first open Curbox, an onboarding screen guides you through a few permissions. You can grant them one by one, or use Shizuku to grant them all automatically.
 
 <Aside type="tip">
-Shizuku is a free helper app that can grant all five permissions with one tap. If that sounds appealing, install Shizuku before opening Curbox for the first time.
+Shizuku is a tool that allows apps to access advanced permissions. [Learn more](https://shizuku.rikka.app/)
 </Aside>
 
 <Steps>
@@ -32,7 +66,7 @@ Shizuku is a free helper app that can grant all five permissions with one tap. I
    Curbox uses a small notification to keep its service running in the background. Tap the button and allow notifications.
 
 3. **Do Not Disturb**
-   Required if you want Curbox to turn on Do Not Disturb automatically. Tap the button and grant access.
+   Allows curbox to turn on dnd according to your schedules.
 
 4. **App Blocker Accessibility**
    This is the main permission. It lets Curbox see which app is on screen so it can block it when needed. Tap the button, find **Curbox** in the list, and turn it on.
@@ -41,11 +75,9 @@ Shizuku is a free helper app that can grant all five permissions with one tap. I
    This lets Curbox track how long you spend in each app. Tap the button, find **Curbox** in the list, and turn it on.
 </Steps>
 
-<Aside type="note">
-Accessibility Services sound powerful, and they are. Curbox only uses them to detect the foreground app and measure your usage time. It never reads your messages, passwords, or anything else you type.
+
+<Aside type="caution">
+If you kinda dumbahh and still downloaded the app as a .apk file despite earlier warning. You won't be able to give permissions like dnd and accessibility.
+In this case you'll have to give the app restricted settings permission. Just search yt on how to do that or install from fdroid app.
 </Aside>
 
-
-## You Are Ready
-
-Once all five permissions are granted, Curbox is active. Head to the [Reducers](BASE_URL/reducers/overview) tab to set up your first limit.

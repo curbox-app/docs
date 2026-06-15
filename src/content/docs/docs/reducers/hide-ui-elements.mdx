@@ -1,5 +1,5 @@
 ---
-title: Hide UI Elements
+title: Ui Hider
 description: How to hide distracting parts of apps like feeds, comments, and recommendations
 sidebar:
   order: 5
@@ -8,24 +8,28 @@ sidebar:
 import { Aside } from '@astrojs/starlight/components';
 
 
-**Hide UI Elements** removes specific parts of an app from your screen. Things like the YouTube recommendation feed, Reddit's home feed, or the "For You" tab on X. The app stays open and usable — only the parts you have targeted disappear.
+**Ui hider** removes specific parts of an app from your screen. Things like the YouTube recommendation feed, or the "For You" tab on X. The app stays open and usable, only the parts you have targeted disappear.
 
 <Aside type="caution">
-This feature is experimental and still in beta. It may occasionally break or behave unexpectedly. The built-in rules are the easiest place to start.
+This feature is experimental and still in beta. It may occasionally break or behave unexpectedly. 
 </Aside>
 
 
-## Enabling Hide UI Elements
+## Enabling UI Hider
 
-Tap **Reducers**, then tap **Hide UI Elements**. Toggle on **Enable View Blocker** at the top of the screen.
+Tap **Reducers**, then tap **UI Hider**. Toggle on **Enable Ui Hider** at the top of the screen.
 
-![The Hide UI Elements screen showing an experimental warning banner, the Enable View Blocker toggle, and two built-in YouTube rules with their own toggles](../../assets/view-blocker-screen.png)
-*Built-in rules appear for any supported app that is installed on your device.*
+## Built-In Scriping
 
+Curbox comes with a full blown scripting languge that allowas you to do math, run loops, conditionals, draw ui, search accessibility node etc. 
+The app comes pre-shipped with multiple scripts that can be used to do block specific ui elements
 
-## Built-In Rules
+### Instagram
 
-Curbox comes with ready-to-use rules for popular apps. A rule only appears on your screen if that app is installed on your device.
+| Rule | What it hides |
+|---|---|
+| Hide home feed except the following tab | Hides everyone's posts except your following list while allowing you to do everything else (eg sending your friends messages).  To access the following tab, press the INSTAGRAM text in cursive at top |
+| Hide explore tab | yes |
 
 ### YouTube
 
@@ -33,12 +37,6 @@ Curbox comes with ready-to-use rules for popular apps. A rule only appears on yo
 |---|---|
 | Hide everything except the video | Removes recommendations, comments, and the description below the player |
 | Hide feed and only let me access search results | Hides the home feed so only search results are visible |
-
-### Reddit
-
-| Rule | What it hides |
-|---|---|
-| Hide home feed but let me access custom feeds | Hides the default home feed so you only see feeds you have specifically subscribed to |
 
 ### X (Twitter)
 
@@ -49,6 +47,418 @@ Curbox comes with ready-to-use rules for popular apps. A rule only appears on yo
 Toggle on the rules you want. Each one works independently.
 
 
-## Custom Rules
+<Aside type="tip">
+If you've no idea how to code, android development or don't want to write scripts yourself. Please skip to the next page.
+</Aside>
 
-If none of the built-in rules cover what you need, you can write your own. Tap **Pick Element** to use the interactive picker — tap any part of any app and Curbox will try to identify it as a target. Custom rules are for advanced users. Join the Curbox Discord if you need help building one.
+
+# Writing Rules
+## How scripts run
+
+- Each script is **bound to one app package** (e.g. `com.instagram.android`).
+- A script runs **only while that app is in the foreground**, re‑running as the screen changes
+  (scrolls, navigations, content updates) so overlays track the live UI.
+- Every run is **sandboxed** with a strict time/operation budget. A buggy or infinite script is
+  aborted automatically and can never crash or freeze your phone (see [Limits & safety](#limits--safety)).
+- Overlays are **redrawn every run**. The overlays you `draw()` during a run are exactly the ones
+  shown; anything you don't redraw disappears. You do **not** need to manually clear old overlays.
+
+To create one: open **Reducers → UI Hider**, turn on the master switch, tap **Add script**, enter the
+app package, write your script, and **Save**. Syntax errors are shown when you save.
+
+---
+
+## A first example
+
+This hides Instagram's home feed while keeping the stories tray, top bar, and bottom navigation:
+
+```
+# Only act inside Instagram
+if app != "com.instagram.android" {
+    return
+}
+
+top = find(id="com.instagram.android:id/action_bar_container")
+nav = find(id="com.instagram.android:id/tab_bar")
+
+# If both anchors are on screen, cover the gap between them = the feed
+if top != null and nav != null {
+    y = top.bottom
+    height = nav.top - y
+    if height > 0 {
+        draw(0, y, screen.width, height)
+    }
+}
+```
+
+The key idea: find two reference nodes, read their screen positions, and use math to compute the
+rectangle to cover.
+
+---
+
+## Language basics
+
+### Comments
+Everything after `#` on a line is ignored.
+```
+# this is a comment
+x = 5   # so is this
+```
+
+### Values & types
+Scripts are dynamically typed. The value types are:
+
+| Type | Examples |
+|------|----------|
+| number | `5`, `3.14`, `-200` (all numbers are decimals internally) |
+| string | `"hello"`, `"com.instagram.android"` |
+| boolean | `true`, `false` |
+| null | `null` (means "nothing", e.g. a node that wasn't found) |
+| list | `[1, 2, 3]`, the result of `findAll(...)` |
+| node | a handle to a UI element, returned by `find()`, `root()`, etc. |
+
+Strings support the escapes `\n`, `\t`, `\"`, `\\`.
+
+### Variables
+Assign with `=` (you can also use `:=`). Variables are created on first assignment — no declaration
+keyword needed.
+```
+x = 10
+name = "feed"
+x = x + 1     # reassignment
+```
+
+### Operators
+
+- **Arithmetic:** `+`  `-`  `*`  `/`  `%`
+  - `+` also **concatenates** if either side is a string: `"y=" + 5` → `"y=5"`.
+- **Comparison:** `==`  `!=`  `<`  `<=`  `>`  `>=`
+- **Logical:** `and`  `or`  `not`
+  - `and`/`or` **short‑circuit**. `not x` negates truthiness.
+- **Grouping:** parentheses `( ... )`.
+
+> **Truthiness:** only `false` and `null` are "falsy". Every other value (including `0` and `""`)
+> is "truthy".
+
+### Lists & ranges
+```
+nums = [10, 20, 30]
+first = nums[0]        # indexing is 0-based -> 10
+count = len(nums)      # -> 3
+
+# A range "a..b" produces a, a+1, ... up to but NOT including b
+for i in 0..3 { log(i) }   # prints 0, 1, 2
+```
+
+### Conditionals
+```
+if x > 100 {
+    log("big")
+} else if x > 10 {
+    log("medium")
+} else {
+    log("small")
+}
+```
+
+### Loops
+```
+# Count-based
+for i in 0..10 {
+    log(i)
+}
+
+# Over a list (e.g. all matched nodes)
+buttons = findAll(class="android.widget.Button")
+for b in buttons {
+    log(b.text)
+}
+
+# Condition-based
+i = 0
+while i < 5 {
+    i = i + 1
+}
+```
+Use `break` to exit a loop early and `continue` to skip to the next iteration.
+
+### Functions
+Define reusable logic with `fn`. Functions can call other functions and recurse.
+```
+fn area(node) {
+    return node.w * node.h
+}
+
+big = find(id="com.app:id/banner")
+if big != null and area(big) > 50000 {
+    hide(big)
+}
+```
+A bare `return` (or reaching the end) returns `null`. A **top‑level** `return` simply ends the script.
+
+---
+
+## The runtime API
+
+These are the built‑in values and functions your script can use to inspect the UI and act on it.
+
+### Context globals
+
+Available automatically in every script:
+
+- `app` — the foreground app's package name (string).
+- `screen.width`, `screen.height` — display size in pixels.
+- `event.type` — what triggered this run: `"window_state"`, `"content"`, `"scrolled"`,
+  `"clicked"`, `"selected"`, or `"other"`.
+- `event.package` — same as `app`.
+- `event.text` — text associated with the event, or `null`.
+- `event.class` — class name of the event source, or `null`.
+
+```
+if event.type == "scrolled" {
+    # only do expensive work on scroll
+}
+```
+
+### Finding nodes
+
+- `root()` — the root node of the current screen.
+- `find(<selectors>)` — the **first** node matching the selectors, or `null`.
+- `findAll(<selectors>)` — a **list** of all matching nodes (may be empty).
+
+`find`/`findAll` also exist as **methods on a node** to search within its subtree:
+`someNode.find(...)`, `someNode.findAll(...)`.
+
+#### Selectors
+Selectors are named arguments. When several are given, a node must match **all** of them.
+
+| Selector | Matches when… |
+|----------|----------------|
+| `id=` | the node's view id equals the value (e.g. `id="com.app:id/title"`) |
+| `text=` | the node's text equals the value exactly |
+| `desc=` | the content description equals the value exactly |
+| `class=` | the class name equals the value (e.g. `class="android.widget.TextView"`) |
+| `textContains=` | the text contains the value (case‑insensitive) |
+| `descContains=` | the content description contains the value (case‑insensitive) |
+| `clickable=` | clickability equals the boolean value |
+| `scrollable=` | scrollability equals the boolean value |
+| `selected=` | selected state equals the boolean value |
+| `checked=` | checked state equals the boolean value |
+
+```
+feed   = find(id="com.instagram.android:id/feed")
+likes  = findAll(descContains="like")
+firstClickable = find(clickable=true)
+```
+
+#### Matching localized text with `appString`
+Many apps label elements with **string resources**, whose displayed text changes by language. To
+match such an element reliably, resolve the resource by name from the current app with
+`appString("resource_name")`, then use it as a selector value:
+```
+forYou = appString("guide_tab_title_for_you")          # resolves to "For you", "Pour vous", …
+if forYou != null and find(desc=forYou, selected=true) != null {
+    # the localized "For You" tab is currently selected
+}
+```
+`appString(...)` returns the resolved string, or `null` if the app or resource isn't found.
+
+### Node properties
+Given a node `n` (read with `n.<property>`):
+
+**Identity / content**
+- `n.id` — view id (string or `null`)
+- `n.text` — text (string or `null`)
+- `n.desc` — content description (string or `null`)
+- `n.class` — class name (string or `null`)
+- `n.path` — best‑effort class‑index path from the root, e.g. `FrameLayout[0]/RecyclerView[1]`
+
+**Geometry (screen pixels)**
+- `n.x`, `n.y` — top‑left corner (aliases: `n.left`, `n.top`)
+- `n.right`, `n.bottom` — bottom‑right edges
+- `n.w`, `n.h` — width and height (aliases: `n.width`, `n.height`)
+- `n.cx`, `n.cy` — center point
+
+**State**
+- `n.clickable`, `n.scrollable`, `n.checked`, `n.selected`, `n.focused`, `n.enabled`, `n.visible`
+- `n.childCount` — number of direct children
+
+### Node methods
+- `n.child(i)` — the i‑th child node, or `null` if out of range
+- `n.children()` — a list of all direct children
+- `n.parent()` — the parent node, or `null`
+- `n.find(...)`, `n.findAll(...)` — search within this node's subtree
+- `n.hide(color=, touch=)` — shortcut for drawing an overlay over this node's bounds
+
+```
+bar = find(id="com.app:id/toolbar")
+if bar != null {
+    log("toolbar has " + bar.childCount + " children")
+    for c in bar.children() {
+        log(c.class + " @ " + c.x + "," + c.y)
+    }
+}
+```
+
+### Drawing & actions
+
+- `draw(x, y, w, h, color=, touch=, key=)` — draw an overlay rectangle.
+  - `x, y` — top‑left in screen pixels; `w, h` — width and height.
+  - `color=` *(optional)* — hex string like `"#000000"`. Defaults to white (or black in dark mode).
+  - `touch=` *(optional)* — `true` (default) blocks touches under the overlay; `false` lets touches
+    pass through (an informational overlay).
+  - `key=` *(optional)* — a stable id for the overlay. Usually unnecessary; if you draw several
+    overlays in a loop and want them updated smoothly rather than recreated, give each a unique key.
+- `hide(node, color=, touch=)` — draw an overlay exactly over `node`'s bounds.
+- `back()` — perform a system Back press (rate‑limited internally).
+- `home()` — perform a system Home press (rate‑limited internally).
+- `log(...)` — write a debug line (visible in `adb logcat`, tag `UiHider`). Handy while developing.
+
+```
+# Cover a fixed banner area, let touches through
+draw(0, 0, screen.width, 120, color="#101010", touch=false)
+
+# Bounce out of a screen you never want to see
+if find(id="com.app:id/reels_tab") != null {
+    back()
+}
+```
+
+### Standard library (math & utilities)
+
+- Math: `min(...)`, `max(...)`, `abs(x)`, `floor(x)`, `ceil(x)`, `round(x)`, `sqrt(x)`,
+  `pow(base, exp)`, `clamp(value, lo, hi)`
+  - `min`/`max` accept multiple numbers (`max(3, 7, 2)`) or a single list (`max([3, 7, 2])`).
+- `len(x)` — length of a string or list.
+- `int(x)` — convert a number/string/boolean to a whole number.
+- `str(x)` — convert any value to its string form.
+- `range(n)` / `range(start, end)` — build a list of numbers (`range(3)` → `[0, 1, 2]`).
+- `appString(name)` — resolve a string resource by name from the current app (for locale‑independent
+  text matching); returns the string or `null`. See [Matching localized text](#matching-localized-text-with-appstring).
+
+```
+height = clamp(nav.top - top.bottom, 0, screen.height)
+```
+
+---
+
+## Persistent storage (caching)
+
+Scripts run **very often** (on every screen change), so re‑doing expensive work each time is wasteful.
+A small per‑script key/value store lets you **cache results** and read them back instantly on later
+runs. The store is kept in memory (fast) and saved to disk in the background, so it also survives app
+restarts. Each script has its **own** namespace — keys never collide between scripts.
+
+- `save(key, value)` — store `value` (a number, string, boolean, or list) under the string `key`.
+- `load(key)` — return the stored value, or `null` if nothing is saved under `key`.
+- `has(key)` — `true` if `key` has a stored value.
+- `remove(key)` — delete the value under `key`.
+
+> Only plain values are storable. You **cannot** `save()` a node — node handles are only valid during
+> the run that produced them. Save the data you need from a node instead (its `id`, bounds, etc.).
+
+**Cache an expensive lookup so later runs skip the work:**
+```
+# Resolve the localized "For You" label once, then reuse it on every subsequent run
+forYou = load("forYouLabel")
+if forYou == null {
+    forYou = appString("guide_tab_title_for_you")
+    if forYou != null {
+        save("forYouLabel", forYou)
+    }
+}
+```
+
+**Remember state across runs (e.g. a counter or a one‑time action):**
+```
+runs = load("runs")
+if runs == null { runs = 0 }
+save("runs", runs + 1)
+```
+
+> **Tip:** caching is most useful for values that are costly to compute but stable — resolved
+> resource strings, fixed layout measurements, feature flags. Don't cache live geometry that changes
+> as the user scrolls.
+
+---
+
+## Putting it together: recipes
+
+**Hide a region between two anchors** (the feed example, generalized):
+```
+top = find(id="com.app:id/header")
+bottom = find(id="com.app:id/footer")
+if top != null and bottom != null {
+    draw(0, top.bottom, screen.width, bottom.top - top.bottom)
+}
+```
+
+**Hide every matching tile:**
+```
+for tile in findAll(id="com.app:id/recommend_card") {
+    hide(tile)
+}
+```
+
+**Only act on a specific screen** (avoid affecting unrelated pages):
+```
+# Bail out unless the search box is present
+if find(id="com.app:id/search_bar") == null {
+    return
+}
+# ... safe to act here ...
+```
+
+**Block the bottom half of the screen with a pass‑through dim:**
+```
+draw(0, screen.height / 2, screen.width, screen.height / 2, color="#80000000", touch=false)
+```
+
+---
+
+## Limits & safety
+
+To guarantee the accessibility service can never hang or crash, each run is capped:
+
+- **Operation budget** — too many statements/iterations aborts the run.
+- **Time budget** — a run that takes too long (~40 ms) is aborted.
+- **Node budget** — visiting too many UI nodes aborts the run.
+- **Recursion depth** — deeply nested function calls are aborted.
+- **Overlay count** — a maximum number of overlays are shown at once.
+
+If a run hits a limit it stops cleanly; the app keeps running and you'll see a warning in
+`adb logcat` (tag `UiHider`). Write loops that terminate, and prefer targeted `find(id=...)` over
+scanning the whole tree where possible.
+
+---
+
+## Tips & gotchas
+
+- **`find` can return `null`.** Always null‑check before reading properties: `if n != null { ... }`.
+- **View ids change between app versions.** If a script stops working after an app update, the
+  target's `id` likely changed — re‑inspect and update it.
+- **Ranges are upper‑exclusive.** `0..n` iterates `0` to `n-1`, which pairs naturally with
+  `childCount` and list indices.
+- **Overlays auto‑clear.** Switching apps or a run that draws nothing removes the overlays — you
+  don't manage their lifecycle.
+- **Use `log()` while developing**, then watch `adb logcat -s UiHider` to see what your script sees.
+- **Keep scripts cheap.** They run frequently; do the minimum work and `return` early when the
+  current screen isn't the one you care about.
+
+---
+
+## Quick reference
+
+```
+# Globals:   app  screen.width  screen.height  event.type  event.package  event.text  event.class
+# Find:      root()  find(<sel>)  findAll(<sel>)            n.find(...)  n.findAll(...)
+# Selectors: id  text  desc  class  textContains  descContains  clickable  scrollable  selected  checked
+# Node prop: id text desc class path  x y left top right bottom w h width height cx cy  childCount
+#            clickable scrollable checked selected focused enabled visible
+# Node fn:   child(i)  children()  parent()  find(...)  findAll(...)  hide(color=, touch=)
+# Actions:   draw(x,y,w,h, color=, touch=, key=)  hide(node, ...)  back()  home()  log(...)
+# Math/util: min max abs floor ceil round sqrt pow clamp  len int str range  appString(name)
+# Storage:   save(key, value)  load(key)  has(key)  remove(key)   (per-script, persistent cache)
+# Control:   if / else if / else   while   for x in <list|a..b>   break   continue
+#            fn name(args) { ... return ... }   return
+```
