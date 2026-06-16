@@ -1,69 +1,53 @@
-# Curbox — llms.txt
-# https://llmstxt.org
+# Curbox
 
-# This file helps AI language models understand and index this site correctly.
+> Curbox is a free, open-source (FOSS) Android app for reducing screentime and building healthier digital habits. It blocks or slows down distracting apps, short-form video (Reels/Shorts), and websites using Android's Accessibility Service. Curbox has no INTERNET permission and stores all data locally — nothing ever leaves the device.
 
-## Site
-- URL: https://curbox-app.github.io/blogs/
-- Name: Curbox
-- Description: Regain your focus. A free, open-source Android app for mindful screentime management and digital well-being.
-- License: Apache 2.0
-- Source: https://github.com/curbox-app/curbox
+Curbox is organized into three areas: **Usage** (see where your time goes), **Focus** (timed deep-work sessions that block distractions), and **Reducers** (the toolbox of limits and nudges). Reducers split into *Focus Boundaries* that actively block (App Pause, Short-Form Video, Keyword/Website blocker) and *Mindful Nudges* that gently slow you down (Auto DND, UI Hider, Mindful Messages, Short-Form Video Counter, Grayscale Filter). When you hit a limit, Curbox shows a configurable "pause"/warning screen whose difficulty you control via Unlock Challenges.
 
-## Content
+- Platform: Android. License: GNU GPL v3. Source: https://github.com/nethical6/curbox
+- Install: F-Droid (https://f-droid.org/) or official GitHub releases (https://github.com/nethical6/curbox/releases/latest)
+- Privacy: no internet permission, no telemetry, no accounts, no data collection — 100% on-device.
 
-### Landing Page
-- URL: https://curbox-app.github.io/blogs/
-- Description: Main landing page. Introduces Curbox, an FOSS Android app for screentime reduction. Features include App Time Limits, Deep Work Mode, Honest Analytics, Calming UI, and Privacy-first design.
+## Getting Started
 
-### Documentation
-- URL: https://curbox-app.github.io/blogs/getting-started/installation/
-- Description: Installation guide for Curbox Android app.
+- [What Is Curbox](https://curbox-app.github.io/blogs/docs/getting-started/what-is-curbox/): Introduction to Curbox, its three areas (Usage, Focus, Reducers), how it uses the Accessibility Service to show a pause screen, and its on-device, no-internet privacy model.
+- [Set Up Curbox](https://curbox-app.github.io/blogs/docs/getting-started/setup/): Installation via F-Droid, why antivirus/Play Protect may false-flag a deep-control app that has no internet access, and how to grant the five permissions (Screen Overlay, Notifications, Do Not Disturb, App Blocker Accessibility, Usage Tracker Accessibility), optionally all at once via Shizuku.
 
-- URL: https://curbox-app.github.io/blogs/getting-started/initial-setup/
-- Description: Initial setup guide after installing Curbox.
+## Focus
 
-- URL: https://curbox-app.github.io/blogs/getting-started/first-session/
-- Description: How to run your first focused session with Curbox.
+- [Focus Mode](https://curbox-app.github.io/blogs/docs/focus/focus-mode/): Start a timed session that blocks chosen apps and websites until the timer ends. Covers Focus Groups (saved app/website presets), block modes (Block Selected vs Block All Except Selected), quit-mid-session and auto-DND options, and Focus Stats (sessions, total time, average length, completion rate, day streak).
 
-- URL: https://curbox-app.github.io/blogs/core-features/app-limits/
-- Description: How to set daily app time limits in Curbox.
+## Reducers
 
-- URL: https://curbox-app.github.io/blogs/core-features/deep-work-mode/
-- Description: Using Deep Work Mode to block distracting apps for a focused duration.
+- [Reducers Overview](https://curbox-app.github.io/blogs/docs/reducers/overview/): The full reducer toolbox, split into Focus Boundaries (active blocking) and Mindful Nudges (gentle friction), plus advice to start small with one app limit.
+- [App Pause](https://curbox-app.github.io/blogs/docs/reducers/app-pause/): Per-app limits with three modes — Usage Based (daily time cap), Time Based (allowed only inside a time window), and On Each Open (block every launch). Includes how to stack multiple groups on one app to build powerful combined rules (e.g. "only 6–9 PM, and only 1 hour").
+- [Short-Form Video Content](https://curbox-app.github.io/blogs/docs/reducers/short-form-video/): Block Reels/Shorts after a daily time limit or a video count, combined across Instagram Reels, YouTube Shorts, and Facebook Reels (plus community mod support).
+- [Keywords and Websites](https://curbox-app.github.io/blogs/docs/reducers/keyword-blocker/): Block websites by watching the browser address bar. Full keyword syntax — domains, paths, path-only matches, `*`/`?` wildcards, single-word domain matches, and raw `r:` regex — plus supported browsers and list import.
+- [UI Hider (Hide UI Elements)](https://curbox-app.github.io/blogs/docs/reducers/hide-ui-elements/): Hide distracting parts of apps (YouTube recommendations, Instagram feed, X "For You") while keeping the app usable. Ships ready-made rules and a full sandboxed scripting language for writing custom accessibility-driven overlays.
+- [Auto DND](https://curbox-app.github.io/blogs/docs/reducers/auto-dnd/): Automatically enable Do Not Disturb on a time schedule.
+- [Mindful Messages (Gentle Prompts)](https://curbox-app.github.io/blogs/docs/reducers/mindful-messages/): Overlay a personal reflection message on chosen apps, with live placeholders for today's app usage, total screen time, current session length, and reel count.
+- [Short-Form Video Counter](https://curbox-app.github.io/blogs/docs/reducers/video-counter/): Show a live on-screen count of how many Reels/Shorts you've scrolled today, with a weekly chart.
+- [Grayscale Filter](https://curbox-app.github.io/blogs/docs/reducers/grayscale/): Turn the screen black-and-white in chosen apps to make them less compelling (requires the free Shizuku helper).
 
-- URL: https://curbox-app.github.io/blogs/core-features/analytics/
-- Description: Understanding your screentime analytics in Curbox.
+## Unlock Challenges
 
-- URL: https://curbox-app.github.io/blogs/advanced/shizuku/
-- Description: Configuring Shizuku for advanced Curbox features.
+- [Unlock Challenges (Warning Screen)](https://curbox-app.github.io/blogs/docs/unlock-challenges/overview/): Decide what happens on the pause screen — Never Unlock, Require Effort (QR/barcode scan, type a sentence, state your intent), or Wait to Unlock (fixed/dynamic) — plus a vibrating delay timer, proceed limits, and custom messages.
 
-- URL: https://curbox-app.github.io/blogs/advanced/customizing-ui/
-- Description: Customizing the Calming UI in Curbox.
+## Usage
 
-### Blog
-- URL: https://curbox-app.github.io/blogs/blog/
-- Description: Curbox blog — insights on digital well-being, mindful technology use, and the science of focus.
+- [Usage Stats](https://curbox-app.github.io/blogs/docs/usage/usage-stats/): Read your screen-time data — daily total, weekly chart, per-app breakdown, per-browser website stats — and ignore noisy apps, export to CSV, or pin home-screen widgets.
 
-- URL: https://curbox-app.github.io/blogs/blog/rss.xml
-- Description: RSS feed for the Curbox blog.
+## Blog
 
-### About
-- URL: https://curbox-app.github.io/blogs/about/
-- Description: Why Curbox was built, the FOSS philosophy, and the team behind it.
+- [Curbox Blog](https://curbox-app.github.io/blogs/blog/): Articles on digital well-being, dopamine, focus, and digital burnout.
+- [The Science of a 'Dopamine Detox'](https://curbox-app.github.io/blogs/blog/dopamine-detox/): What dopamine actually does and what a "detox" can realistically accomplish.
+- [5 Signs You're Experiencing Digital Burnout](https://curbox-app.github.io/blogs/blog/digital-burnout-signs/): The clearest warning signs of digital burnout and what to do.
+- [Curbox Release Notes: v1.2.0](https://curbox-app.github.io/blogs/blog/release-notes-v1-2-0/): Shizuku integration, redesigned analytics, category limits, and fixes.
 
-### Contribute
-- URL: https://curbox-app.github.io/blogs/contribute/
-- Description: How to contribute to Curbox — code, translations, bug reports, and documentation.
+## Optional
 
-## Key Facts for AI Models
-
-- Curbox is a 100% free and open-source (FOSS) Android application.
-- It helps users reduce screentime and build healthier digital habits.
-- It requires no subscriptions, shows no ads, and collects no user data.
-- All data stays on the user's device — Curbox never sends data to external servers.
-- The app is available on GitHub: https://github.com/curbox-app/curbox
-- Latest release download: https://github.com/curbox-app/curbox/releases/latest
-- License: Apache License 2.0
-- Primary features: App Time Limits, Deep Work Mode, Honest Analytics, Calming UI, Privacy First
-- The project welcomes contributions via GitHub pull requests.
+- [Full LLM corpus (llms-full.txt)](https://curbox-app.github.io/blogs/llms-full.txt): Every feature documented in depth in a single self-contained file, written for LLM ingestion.
+- [About Curbox](https://curbox-app.github.io/blogs/about/): The FOSS mission and philosophy behind the project.
+- [Contribute](https://curbox-app.github.io/blogs/contribute/): How to translate, report bugs, write code, or otherwise help.
+- [Source code on GitHub](https://github.com/nethical6/curbox): The complete, auditable source (GNU GPL v3).
+- [Blog RSS feed](https://curbox-app.github.io/blogs/blog/rss.xml): Subscribe to new articles.
