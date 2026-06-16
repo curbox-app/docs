@@ -1,6 +1,6 @@
 ---
 title: Auto DND
-description: How to automatically turn on Do Not Disturb when you open certain apps
+description: How to automatically turn on Do Not Disturb 
 sidebar:
   order: 6
 ---
@@ -8,7 +8,7 @@ sidebar:
 import { Steps, Aside } from '@astrojs/starlight/components';
 
 
-**Auto DND** silences your notifications the moment you open a chosen app. When you leave the app, Do Not Disturb turns off automatically. It helps you stay present and cuts down the urge to bounce between apps while you are already on your phone.
+**Auto DND** silences your notifications according to the time schedule you set.
 
 
 ## Setting It Up
@@ -26,13 +26,12 @@ import { Steps, Aside } from '@astrojs/starlight/components';
 3. **Name your group**
    Type a name for this group, like "Social Apps" or "Evening Browsing."
 
-4. **Select apps**
-   Choose the apps that should trigger Do Not Disturb when opened.
+4. **Select Time Schedule**
 
 5. **Save**
    Tap **Done**. Auto DND is now active for those apps.
 </Steps>
 
-<Aside type="note">
-Auto DND requires the Do Not Disturb permission. If you skipped it during setup, Curbox will ask you to grant it when you try to enable this feature. Tap the prompt and follow the on-screen instructions.
+<Aside type="caution">
+The app can't cross midnight in a single time range. For an overnight time range like 11 PM to 2 AM, just make two separate blocks: 11 PM to 12 AM, and 12 AM to 2 AM.
 </Aside>
