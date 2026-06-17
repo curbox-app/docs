@@ -30,12 +30,11 @@ jobs:
       # withastro/action handles Node setup, dependency install, `astro build`,
       # and uploading the built site as a GitHub Pages artifact in one step.
       #
-      # IMPORTANT — base path:
-      #   • Custom domain (curbox.app): no changes needed; `base` stays unset in astro.config.mjs.
-      #   • Default GitHub Pages URL (curbox-app.github.io/blogs): add `base: '/blogs'`
-      #     to astro.config.mjs and set the env var below:
-      #       env:
-      #         PUBLIC_BASE_PATH: /blogs
+      # This is the documentation subsite. It is served at curbox.app/docs/
+      # because the main site repo (curbox-app.github.io) is the org user page
+      # holding the curbox.app custom domain, and this project repo is named
+      # `docs`. The `/docs` base path is set in astro.config.mjs — do NOT add a
+      # CNAME file here, or it would try to claim the apex domain.
       - name: Build with Astro
         uses: withastro/action@v3
         with:

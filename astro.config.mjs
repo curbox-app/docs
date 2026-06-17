@@ -6,7 +6,8 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 // Canonical site + project identifiers, used for SEO + AI/LLM discoverability.
-const SITE_URL = 'https://curbox-app.github.io/blogs/';
+// This is the documentation subsite, served at curbox.app/docs/.
+const SITE_URL = 'https://curbox.app/docs/';
 const REPO_URL = 'https://github.com/nethical6/curbox';
 const SITE_DESCRIPTION =
   'Curbox is a free, open-source (FOSS) Android app for reducing screentime and building healthier digital habits. It blocks or slows down distracting apps, short-form video (Reels/Shorts), and websites — entirely on-device, with no internet permission and no data collection.';
@@ -53,8 +54,9 @@ const structuredData = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://curbox-app.github.io',
-  base: '/blogs',
+  // Served as a subsite under the main custom domain (curbox.app/docs/).
+  site: 'https://curbox.app',
+  base: '/docs',
   integrations: [
     sitemap({
       // Help crawlers understand freshness and crawl cadence.
@@ -96,40 +98,40 @@ export default defineConfig({
         {
           label: 'Getting Started',
           items: [
-            { label: 'What Is Curbox', slug: 'docs/getting-started/what-is-curbox' },
-            { label: 'Set Up Curbox', slug: 'docs/getting-started/setup' },
+            { label: 'What Is Curbox', slug: 'getting-started/what-is-curbox' },
+            { label: 'Set Up Curbox', slug: 'getting-started/setup' },
           ],
         },
         {
           label: 'Focus',
           items: [
-            { label: 'Focus Mode', slug: 'docs/focus/focus-mode' },
+            { label: 'Focus Mode', slug: 'focus/focus-mode' },
           ],
         },
         {
           label: 'Reducers',
           items: [
-            { label: 'Overview', slug: 'docs/reducers/overview' },
-            { label: 'App Pause', slug: 'docs/reducers/app-pause' },
-            { label: 'Short-Form Video Content', slug: 'docs/reducers/short-form-video' },
-            { label: 'Keywords and Websites', slug: 'docs/reducers/keyword-blocker' },
-            { label: 'Hide UI Elements', slug: 'docs/reducers/hide-ui-elements' },
-            { label: 'Auto DND', slug: 'docs/reducers/auto-dnd' },
-            { label: 'Mindful Messages', slug: 'docs/reducers/mindful-messages' },
-            { label: 'Short-Form Video Counter', slug: 'docs/reducers/video-counter' },
-            { label: 'Grayscale Filter', slug: 'docs/reducers/grayscale' },
+            { label: 'Overview', slug: 'reducers/overview' },
+            { label: 'App Pause', slug: 'reducers/app-pause' },
+            { label: 'Short-Form Video Content', slug: 'reducers/short-form-video' },
+            { label: 'Keywords and Websites', slug: 'reducers/keyword-blocker' },
+            { label: 'Hide UI Elements', slug: 'reducers/hide-ui-elements' },
+            { label: 'Auto DND', slug: 'reducers/auto-dnd' },
+            { label: 'Mindful Messages', slug: 'reducers/mindful-messages' },
+            { label: 'Short-Form Video Counter', slug: 'reducers/video-counter' },
+            { label: 'Grayscale Filter', slug: 'reducers/grayscale' },
           ],
         },
         {
           label: 'Unlock Challenges',
           items: [
-            { label: 'Overview', slug: 'docs/unlock-challenges/overview' },
+            { label: 'Overview', slug: 'unlock-challenges/overview' },
           ],
         },
         {
           label: 'Usage',
           items: [
-            { label: 'Usage Stats', slug: 'docs/usage/usage-stats' },
+            { label: 'Usage Stats', slug: 'usage/usage-stats' },
           ],
         },
       ],
