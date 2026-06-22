@@ -90,6 +90,14 @@ export default defineConfig({
           attrs: { type: 'application/ld+json' },
           content: JSON.stringify(structuredData),
         },
+        {
+          tag: 'script',
+          attrs: {
+            async: true,
+            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6691567820758785',
+            crossorigin: 'anonymous',
+          },
+        },
       ],
       customCss: [
         './src/styles/custom.css',
