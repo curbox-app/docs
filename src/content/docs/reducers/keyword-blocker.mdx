@@ -18,16 +18,32 @@ Keyword Blocker works in these browsers:
 - Google Chrome
 - Brave
 - Firefox
+- IronFox
+- Firefox Focus
+- IceRaven
 - Fennec
+- Vivaldi
 - Opera
 - Cromite
 - Vanadium (GrapheneOS)
 
-also if you're kinda pro, you can easily add support for a browser, especially if it's Chromium or Firefox based. Read [CONTRIBUTING.md](https://github.com/nethical6/curbox/)
+also if you're kinda pro, you can easily add support for a browser, especially if it's Chromium or Firefox based. Read [CONTRIBUTING.md](https://github.com/curbox-app/curbox-android/CONTRIBUTING.md)
 
 <Aside type="note">
 Keyword Blocker only works in the browsers listed above. If you use a different browser, the blocking will not apply there. Consider adding that browser to **App Pause** instead.
 </Aside>
+
+
+## How a Group Works
+
+Each Keyword Blocker group has two controls:
+
+| Control | What it does |
+|---|---|
+| **Active Schedule** | Defines the time window(s) when the block is active. Matching URLs are blocked during this period. |
+| **Usage Limit** | *(Optional)* Sets how long you can browse matched sites during the active schedule before they get blocked. Leave this empty to block the sites for the entire schedule window without any browsing allowance. |
+
+For example, an Active Schedule of 9 AM – 5 PM with no Usage Limit blocks the sites entirely during work hours. Add a Usage Limit of 15 minutes and the sites are accessible during that window, but only for 15 minutes before they lock.
 
 
 ## Creating a Keyword Group
@@ -48,13 +64,30 @@ Keyword Blocker only works in the browsers listed above. If you use a different 
 4. **Add keywords**
    Type the words or URL fragments you want to block. One keyword per entry.
    Scroll a few inches below on this page to learn how to write em properly.
-5. **Configure the warning screen** (optional)
+
+5. **Set the Active Schedule**
+   Tap **Active Schedule** to define when the block should be active — which hours and days of the week.
+
+6. **Set a Usage Limit** (optional)
+   Tap **Usage Limit** to cap how long the sites can be browsed during the active schedule. Leave it empty to block them for the entire schedule window.
+
+7. **Configure the warning screen** (optional)
    Tap **Configure Warning Screen** to choose what happens when someone visits a blocked URL. See [Unlock Challenges](BASE_URL/unlock-challenges/overview).
 
-6. **Save**
+8. **Save**
    Tap **Done**. The group is active immediately.
 </Steps>
 
+<Aside type="tip">
+We have made a list of keyword packs for p*rn, gambling, and so on [here](https://github.com/curbox-app/website_packs). If you're lazy to write keywords, you can easily import those into curbox!
+</Aside>
+
+
+## Using Multiple Groups for the Same Keywords
+
+You can have the same keyword in more than one group. This lets you apply different rules at different times — for example, a strict block overnight and a short usage allowance during the day.
+
+**The schedules must not overlap.** If two groups share a keyword and their Active Schedules overlap, Curbox will show a warning. Fix the overlap before the groups can both be active.
 
 
 # How to Write Keywords
