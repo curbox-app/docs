@@ -128,6 +128,8 @@ export default defineConfig({
             { label: 'Mindful Messages', slug: 'reducers/mindful-messages' },
             { label: 'Short-Form Video Counter', slug: 'reducers/video-counter' },
             { label: 'Grayscale Filter', slug: 'reducers/grayscale' },
+            { label: 'Settings Change Delay', slug: 'reducers/settings-change-delay' },
+            { label: 'Tamper Protection', slug: 'reducers/tamper-protection' },
           ],
         },
         {
