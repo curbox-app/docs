@@ -8,7 +8,7 @@ sidebar:
 import { Steps, Aside } from '@astrojs/starlight/components';
 
 
-**Block Short Form Content** stops you from scrolling through reels and shorts once you have reached a limit you set. You can choose a daily time total or a number of videos watched — whichever feels more meaningful to you.
+**Block Short Form Content** stops you from scrolling through reels and shorts once you hit a limit you set. You can cap by time, by video count, or both — and control exactly when and where the block applies.
 
 
 ## Supported Apps
@@ -16,8 +16,10 @@ import { Steps, Aside } from '@astrojs/starlight/components';
 Block Short Form Content works in these apps:
 
 - Instagram (Reels)
+- Instagram lite 
 - YouTube (Shorts)
-- Facebook (Reels)
+- Facebook (Reels) (experimental)
+- Tiktok
 
 Curbox doesn't endorse any mod apps or illegal activities. These have been added by community members to the project.
 - MyInsta
@@ -27,40 +29,45 @@ Curbox doesn't endorse any mod apps or illegal activities. These have been added
 btw if you're kinda tech savvy, you can easily add support for a new mod. Read [CONTRIBUTING.md](https://github.com/nethical6/curbox/)
 
 
-## Blocking Modes
+## How It Works
 
-| Mode | How it works |
+| Control | What it does |
 |---|---|
-| **Time Based** | Tracks how long you spend watching short form videos each day. Blocks when you hit your time limit. |
-| **Reel Count Based** | Counts how many short videos you watch. Blocks when you hit your count. |
+| **Active Schedule** | Defines the time window(s) when the block is active. Short-form content is blocked during this period. |
+| **Usage Limit** | *(Optional)* Sets how long you can watch short-form videos during the active schedule before it blocks. Leave empty to block for the entire schedule window. |
+| **Configure Reel Count** | *(Optional)* Sets how many reels or shorts you can scroll through before the block triggers. |
+| **Allowed Apps** | Apps excluded from this configuration — short-form content in these apps will not be blocked. |
 
 <Aside type="note">
-The count and time are combined across all supported apps. If you set a limit of 20 videos, watching 10 Reels on Instagram and 10 Shorts on YouTube counts as 20 total.
+The reel count and time are combined across all supported apps. If you set a limit of 20 videos, watching 10 Reels on Instagram and 10 Shorts on YouTube counts as 20 total.
 </Aside>
 
 
 ## Setting It Up
-
-![The Block Short Form Content screen showing a main toggle, and two radio options: Time Based and Reel Count Based](../assets/short-form-content-screen.png)
-*Toggle the switch at the top right to turn the feature on, then choose your mode.*
 
 <Steps>
 1. **Open Short-Form Video Content**
    Tap **Reducers**, then tap **Short-Form Video Content**.
 
 2. **Toggle the main switch on**
-   The switch is at the top right of the **Block Short Form Content** screen.
+   The switch is at the top right of the screen.
 
-3. **Choose a blocking mode**
-   Select **Time Based** or **Reel Count Based**.
+3. **Set the Active Schedule**
+   Tap **Active Schedule** to define when the block should be active — which hours and days of the week.
 
-4. **Configure your schedule** (optional)
-   Tap **Configure Allowed Schedule** to set the hours when the block is active.
+4. **Set a Usage Limit** (optional)
+   Tap **Usage Limit** to cap total watch time during the active schedule. Leave empty to block for the entire window.
 
-5. **Configure the warning screen** (optional)
+5. **Configure Reel Count** (optional)
+   Tap **Configure Reel Count** to set how many reels or shorts can be scrolled before the block triggers.
+
+6. **Set Allowed Apps** (optional)
+   Tap **Allowed Apps** and select any apps that should be ignored by this configuration.
+
+7. **Configure the warning screen** (optional)
    Tap **Configure Warning Screen** to choose what happens when the block triggers. See [Unlock Challenges](BASE_URL/unlock-challenges/overview) for the full guide.
 </Steps>
 
 <Aside type="caution">
-The app can't cross midnight in a single schedule for time based block. For an overnight block like 11 PM to 2 AM, just make two separate blocks: 11 PM to 12 AM, and 12 AM to 2 AM.
+A single schedule block cannot cross midnight. For an overnight block like 11 PM to 2 AM, create two separate blocks: 11 PM to 12 AM, and 12 AM to 2 AM.
 </Aside>
