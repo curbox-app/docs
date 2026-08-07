@@ -98,6 +98,16 @@ export default defineConfig({
             crossorigin: 'anonymous',
           },
         },
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://cdn.databuddy.cc/databuddy.js',
+            'data-client-id': 'f764faf6-d675-4d8b-8853-1a07f4245fd8',
+            'data-track-web-vitals': 'true',
+            crossorigin: 'anonymous',
+            async: true,
+          },
+        },
       ],
       customCss: [
         './src/styles/custom.css',
