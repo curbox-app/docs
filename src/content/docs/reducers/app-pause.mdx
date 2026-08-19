@@ -1,117 +1,93 @@
 ---
 title: App Pause
-description: How to set daily time limits and schedules for your apps
+description: Create scheduled app blocks and app usage limits
 sidebar:
   order: 2
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
+**App Pause** applies a schedule and an optional usage limit to a group of apps. When a block starts, Curbox shows the configured warning screen.
 
-**App Pause** lets you set automated schedules and usage limits for any app. When a block triggers, Curbox shows a pause screen — you decide what it takes to get through it.
+Focus Mode is for a session that you start manually. App Pause is for a group that follows a repeated schedule.
 
-<Aside type="tip">
-The main difference is that Focus Mode is designed to quickly block apps for a specific duration, whereas App Pause is intended for running automated daily schedules.
-</Aside>
+## App Pause controls
 
+Each App Pause group has these controls:
 
-## How a Group Works
-
-Each App Pause group has two controls:
-
-| Control | What it does |
+| Control | Function |
 |---|---|
-| **Active Schedule** | Defines the time window(s) when the block is active. The app is blocked during this period. |
-| **Usage Limit** | *(Optional)* Sets how long you can use the app during the active schedule before it gets blocked. Leave this empty if you want to block the app for the entire schedule window without any usage allowance. |
+| **Active Schedule** | Sets the days and times when the group applies |
+| **Usage Limit** | Sets the permitted app-use duration during the active schedule |
 
-For example, an Active Schedule of 9 PM – 7 AM with no Usage Limit blocks the app entirely overnight. Add a Usage Limit of 30 minutes and the app is available during those hours, but only for 30 minutes before it locks.
+If **Usage Limit** is empty, Curbox blocks the apps for the complete active schedule. If you set a limit, Curbox blocks the apps after you use that duration.
 
+Example: A group is active from 9:00 PM to 7:00 AM. An empty limit blocks the apps for that complete period. A 30-minute limit permits 30 minutes of use during that period.
 
-## Creating a Group
+## Create an App Pause group
 
 <Steps>
-1. **Open App Pause**
-   Tap **Reducers** in the bottom navigation bar, then tap **Apps**.
+1. **Open Apps**
+   Tap **Reducers**. Then, tap **Apps**.
 
-2. **Tap the + button**
-   The **+** button is in the bottom right corner of the screen. Tap it to open **Create App Group**.
+2. **Create a group**
+   Tap the **+** button. Curbox opens **Create App Group**.
 
 3. **Enter a name**
-   Type a name in the **Name** field. Something clear like "Instagram" or "Social Media" works well.
+   Enter a short name in **Name**.
 
 4. **Select apps**
-   Tap **Select Apps** and choose the apps you want to include in this group.
+   Tap **Select Apps**. Select one or more apps.
 
-5. **Set the Active Schedule**
-   Tap **Active Schedule** to define when the block should be active — which hours and days of the week.
+5. **Set the active schedule**
+   Tap **Active Schedule**. Select the days and times when the group applies.
 
-6. **Set a Usage Limit** (optional)
-   Tap **Usage Limit** to cap how long the app can be used during the active schedule. Leave it empty to block the app for the entire schedule window.
+6. **Set a usage limit (optional)**
+   Tap **Usage Limit**. Enter the permitted use duration.
 
-7. **Configure the warning screen** (optional)
-   Tap **Configure Warning Screen** to choose what happens when the block triggers. See [Unlock Challenges](BASE_URL/unlock-challenges/overview) for the full guide. By default, you'll have to wait 15 sec to get an unlock period of 2 minutes.
+7. **Configure the warning screen (optional)**
+   Tap **Configure Warning Screen**. Configure the action that is necessary to continue. Read [Unlock Challenges](../../unlock-challenges/overview/) for all options.
 
-8. **Tap Done**
-   Your group is saved and active immediately.
+8. **Save the group**
+   Tap **Done**. Curbox activates the group.
 </Steps>
 
 <Aside type="tip">
-Press the 3 dots in the app selector to quickly copy an app lists from previously created reducer group
+Open the menu in the app selector to copy an app list from another reducer group.
 </Aside>
 
-<Aside type="tip">
-If you want to set active for entire day, set both the start and end time ranges to 12am. 
-</Aside>
+## Configure an all-day or overnight schedule
 
-<Aside type="caution">
-A single schedule block cannot cross midnight. For an overnight block like 11 PM to 2 AM, create two separate blocks: 11 PM to 12 AM, and 12 AM to 2 AM.
-When you create a time range like 9pm to 7 am, curbox automatically splits them for you!
-</Aside>
+Set the start and end times to 12:00 AM for an all-day schedule.
 
+Curbox automatically splits a time range that crosses midnight. For example, Curbox stores 11:00 PM to 2:00 AM as two adjacent ranges.
 
-## Managing Your Groups
+## Manage groups
 
-The **App Pause** screen shows all your groups in a list. Each card shows the group name, how many apps are in it, and its active schedule.
+The **Apps** screen shows the name, number of apps, and active schedule for each group.
 
-Toggle the switch on any card to pause or resume that group without deleting it.
+Turn off the switch on a group card to pause the group. Turn on the switch to activate the group again.
 
+## Use the same app in multiple groups
 
-## Using Multiple Groups for the Same App
+You can put the same app in multiple groups. The active schedules for that app must not overlap.
 
-You can add the same app to more than one group. This lets you apply different rules at different times of day — for example, a strict block at night and a usage limit during the day.
+If two schedules overlap, Curbox shows a warning. Change one schedule before you activate both groups.
 
-**The schedules must not overlap.** If two groups contain the same app and their Active Schedules overlap, Curbox will show a warning. Fix the overlap before the groups can both be active.
+### Example: daytime limit and overnight block
 
-### Example: Daytime cap + overnight block
+| Group | Active schedule | Usage limit |
+|---|---|---|
+| Instagram Daytime | 9:00 AM to 10:00 PM | 45 minutes |
+| Instagram Night Block | 10:00 PM to 9:00 AM | Empty |
 
-**Group A — "Instagram Daytime"**
-- Apps: Instagram
-- Active Schedule: 9 AM – 10 PM
-- Usage Limit: 45 minutes
+The daytime group permits 45 minutes of use. The night group blocks Instagram for the complete overnight period.
 
-**Group B — "Instagram Night Block"**
-- Apps: Instagram
-- Active Schedule: 10 PM – 9 AM
-- Usage Limit: *(empty — fully blocked)*
+### Example: weekday and weekend limits
 
-What this looks like each day:
+| Group | Active schedule | Usage limit |
+|---|---|---|
+| Social Weekday Limit | Monday through Friday, all day | 30 minutes |
+| Social Weekend Limit | Saturday and Sunday, all day | 90 minutes |
 
-- Before 9 AM: Instagram is blocked by Group B.
-- 9 AM – 10 PM: Instagram is available for up to 45 minutes. Once the limit is used, it blocks for the rest of that window.
-- 10 PM onwards: Instagram is blocked again by Group B, regardless of how much usage time is left.
-
-### Example: Weekday schedule only
-
-**Group A — "Social Weekday Cap"**
-- Apps: Instagram, TikTok
-- Active Schedule: Monday–Friday, all day
-- Usage Limit: 30 minutes
-
-**Group B — "Social Weekend"**
-- Apps: Instagram, TikTok
-- Active Schedule: Saturday–Sunday, all day
-- Usage Limit: 90 minutes
-
-Each group's usage counter is independent. Monday's 30 minutes has nothing to do with Saturday's 90 minutes.
-
----
+Each group has an independent usage counter.

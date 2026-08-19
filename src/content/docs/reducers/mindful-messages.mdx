@@ -1,70 +1,69 @@
 ---
 title: Mindful Messages
-description: How to show yourself a personal reminder when you open an app
+description: Show a configured message over selected apps
 sidebar:
   order: 7
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
+**Mindful Messages** shows your text over a selected app. The message stays visible while you use the app.
 
-**Mindful Messages** shows a message you wrote to yourself on top of the selected app the entire time you use it. You might write something like "Is this really important?" or "You wanted to read more instead." A moment of honest reflection can go a long way.
+Open **Gentle Prompts** in the **Reducers** list to configure Mindful Messages.
 
-You find this feature under **Gentle Prompts** in the Reducers list.
+![A Mindful Message overlay with usage values](../assets/mindful_message.png)
+*A message can contain text and current usage values.*
 
-![mindful message in action](../assets/mindful_message.png)
-*Write your message in the MESSAGES area. The placeholder variables update automatically each time the message appears.*
+## Configure Mindful Messages
 
-## Setting It Up
-
-![The Mindful Messages screen showing an Enable toggle, a Select Apps button, a MESSAGES text area with a default message using placeholders, and Appearance sliders](../assets/mindful-messages-screen.png)
-*Write your message in the MESSAGES area. The placeholder variables update automatically each time the message appears.*
+![The Mindful Messages screen with app selection, a message field, and appearance controls](../assets/mindful-messages-screen.png)
+*The message field accepts one message on each line.*
 
 <Steps>
 1. **Open Gentle Prompts**
-   Tap **Reducers**, then tap **Gentle Prompts**.
+   Tap **Reducers**. Then, tap **Gentle Prompts**.
 
-2. **Toggle on Enable Mindful Messages**
-   The switch is at the top of the **Mindful Messages** screen.
+2. **Turn on Mindful Messages**
+   Turn on **Enable Mindful Messages**.
 
-3. **Select target apps**
-   Tap **Select Apps** and choose which apps should show the message when opened.
+3. **Select apps**
+   Tap **Select Apps**. Select the apps that must show a message.
 
-4. **Write your message**
-   In the **MESSAGES** section, type your message in the text area. Write one message per line. Each line is shown separately on the overlay.
+4. **Enter messages**
+   Enter the text in **MESSAGES**. Put each message on a separate line.
 
-5. **Add placeholders** (optional)
-   Insert variables from the table below to make the message personal and specific to the moment you are in.
+5. **Add placeholders (optional)**
+   Add one or more placeholders from the reference table.
 </Steps>
 
+## Placeholder reference
 
-## Placeholders
+Curbox replaces a placeholder with its current value when it shows the message.
 
-| Placeholder | What it shows |
+| Placeholder | Value |
 |---|---|
-| `{app_usage_today}` | Time spent in this app today |
-| `{screentime_today}` | Total screen time across all apps today |
-| `{live_session_duration}` | How long you have been in this app continuously right now |
-| `{reel_count}` | How many short form videos you have watched today |
+| `{app_usage_today}` | Use duration for the current app today |
+| `{screentime_today}` | Total screen time today |
+| `{live_session_duration}` | Continuous duration in the current app |
+| `{reel_count}` | Number of short-form videos today |
 
-Example message:
+Example:
 
+```text
+Complete the planned task.
+App use today: {app_usage_today}
+Screen time today: {screentime_today}
+Current session: {live_session_duration}
 ```
-Is this really important?
-App Usage: {app_usage_today}
-Screen Time: {screentime_today}
-Session: {live_session_duration}
-```
 
+## Change the appearance
 
-## Appearance
+Scroll to **Appearance**. Configure these controls:
 
-Scroll down to the **Appearance** section to change how the overlay looks.
-
-- **Text Size** — drag the slider to make the text larger or smaller
-- **Text Opacity** — drag the slider to make the text more or less visible
-- **Background Color** — tap a color swatch to change the overlay background
+- **Text Size** changes the text size.
+- **Text Opacity** changes the text visibility.
+- **Background Color** changes the overlay background.
 
 <Aside type="tip">
-A dark background with large text tends to be the most noticeable without feeling harsh. Start with black and adjust from there.
+Use high contrast between the text and the background. Check the message in each selected app.
 </Aside>

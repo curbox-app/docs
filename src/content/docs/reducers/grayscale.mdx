@@ -1,87 +1,88 @@
 ---
 title: Grayscale Filter
-description: How to turn your screen gray when you open certain apps
+description: Remove screen colors while selected apps are open
 sidebar:
   order: 9
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
-
-**Grayscale Filter** turns your screen black and white when you open a chosen app. Color is one of the main reasons apps feel exciting and hard to put down — removing it makes them feel dull in a helpful way.
+**Grayscale Filter** removes screen colors while a selected app is open. Curbox restores the colors when you leave the app.
 
 <Aside type="note">
-Grayscale Filter requires the `android.permission.WRITE_SECURE_SETTINGS` permission. The easiest way to grant it is through Shizuku, which is a one-time setup.
+Grayscale Filter requires the `android.permission.WRITE_SECURE_SETTINGS` permission. You can give this permission with Shizuku or ADB.
 </Aside>
 
+## Give the permission with Shizuku
 
-## Setting Up Shizuku
+Shizuku lets Curbox request the necessary permission without a computer. You usually complete this setup one time.
 
-![The Grayscale Filter Setup screen showing an empty state and a Shizuku Permission Required card with a Grant Permission button](../assets/grayscale-setup-screen.png)
-*The Shizuku Permission Required card appears until you complete the setup below.*
-
-Shizuku is a free Android app that gives Curbox the special permission needed to apply the grayscale effect. Setting up Shizuku is a one-time process — once done, it works for all features that need it.
+![The Grayscale Filter screen with a Shizuku Permission Required card](../assets/grayscale-setup-screen.png)
+*The permission card stays visible until Curbox has the required permission.*
 
 <Steps>
 1. **Install Shizuku**
-   Download Shizuku from the Play Store or from its GitHub releases page.
+   Install Shizuku from its [official website](https://shizuku.rikka.app/).
 
-2. **Activate Shizuku**
-   Open Shizuku and follow its setup instructions. If you are on Android 11 or higher, you can activate it using Wireless Debugging — no computer needed.
+2. **Start Shizuku**
+   Open Shizuku, and complete its setup procedure. Android 11 and later can use wireless debugging.
 
-3. **Grant permission to Curbox**
-   Open Curbox, tap **Reducers**, then tap **Grayscale Filter**. You will see a **Shizuku Permission Required** card. Tap **Grant Permission** and approve the popup.
+3. **Open Grayscale Filter**
+   In Curbox, tap **Reducers**. Then, tap **Grayscale Filter**.
+
+4. **Give the permission**
+   Tap **Grant Permission**. Approve the Shizuku request.
 </Steps>
 
-## Granting Permission Without Shizuku
+## Give the permission with ADB
 
-If you prefer not to install Shizuku, you can grant the `android.permission.WRITE_SECURE_SETTINGS` permission directly using ADB (Android Debug Bridge) from a computer.
+Use this procedure if you do not use Shizuku. ADB is part of the Android SDK Platform Tools.
 
 <Steps>
-1. **Enable Developer Options on your phone**
-   Go to **Settings → About phone** and tap **Build number** seven times until you see "You are now a developer."
+1. **Install the platform tools**
+   Download [SDK Platform Tools](https://developer.android.com/tools/releases/platform-tools) to your computer.
 
-2. **Enable USB Debugging**
-   Go to **Settings → Developer options** and turn on **USB Debugging**.
+2. **Turn on Developer options**
+   Open Android **Settings**. Open **About phone**, and tap **Build number** seven times.
 
-3. **Connect your phone to a computer**
-   Use a USB cable to connect your Android device to your computer.
+3. **Turn on USB debugging**
+   Open **Developer options**. Turn on **USB debugging**.
 
-4. **Install ADB on your computer**
-   If you don't have ADB installed, download the Android SDK Platform Tools from the Android developer site and add it to your system PATH.
+4. **Connect the device**
+   Connect the device to the computer with a USB cable. Approve the debugging request on the device.
 
-5. **Verify the connection**
-   Open a terminal or command prompt and run:
-   ```
+5. **Check the connection**
+   Run this command from the platform-tools directory:
+
+   ```bash
    adb devices
    ```
-   Your device should appear in the list. If prompted on your phone, tap **Allow** to authorize the connection.
 
-6. **Grant the permission**
-   Run the following command, replacing `com.curbox` with Curbox's actual package name if different:
-   ```
+   Make sure that the device status is `device`.
+
+6. **Give the permission**
+   Run this command:
+
+   ```bash
    adb shell pm grant neth.iecal.curbox android.permission.WRITE_SECURE_SETTINGS
    ```
 
-7. **Verify in Curbox**
-   Open Curbox and navigate to **Reducers → Grayscale Filter**. The permission prompt should be gone and the feature should be ready to use.
+7. **Check Curbox**
+   Open **Reducers**, and then open **Grayscale Filter**. The permission card must not appear.
 </Steps>
 
-
-## Creating a Grayscale Group
-
-Once Shizuku permission is granted, you can set up your groups.
+## Create a Grayscale Filter group
 
 <Steps>
-1. **Tap the + button**
-   The **+** button is in the bottom right corner of the **Grayscale Filter Setup** screen.
+1. **Create a group**
+   Tap the **+** button on the **Grayscale Filter** screen.
 
-2. **Name your group**
-   Type a name like "TikTok" or "Social Apps."
+2. **Enter a group name**
+   Enter a short name.
 
 3. **Select apps**
-   Choose the apps that should switch to grayscale when opened.
+   Select the apps that Curbox must show in grayscale.
 
-4. **Save**
-   Tap **Done**. The filter is active for those apps immediately.
+4. **Save the group**
+   Tap **Done**. Curbox activates the filter for the selected apps.
 </Steps>

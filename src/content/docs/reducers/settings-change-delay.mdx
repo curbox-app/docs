@@ -1,44 +1,42 @@
 ---
 title: Settings Change Delay
-description: How the settings change delay protects your limits from impulsive weakening
+description: Delay changes that make a Curbox restriction weaker
 sidebar:
   order: 10
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
+**Settings Change Delay** delays a settings change that makes a restriction weaker. The current restriction stays active during the delay.
 
-**Settings change delay** is a protection against impulsive weakening of your limits.
+## How the delay works
 
-When enabled, any change that makes a restriction weaker does not apply right away. The stronger rules stay in place while the wait runs out, giving you a buffer between a weak moment and an actual loss of protection.
+- Curbox saves a weaker change as a pending change.
+- The current settings stay active during the delay.
+- Curbox applies the pending change when the delay ends.
+- You can cancel a pending change before Curbox applies it.
+- A stricter change applies immediately and removes a weaker pending change for the same feature.
+- A shorter delay is a weaker change. The current delay applies before Curbox changes it.
+- Turning off the delay is a weaker change. The current delay applies before Curbox turns it off.
 
-
-## How It Works
-
-- Changes that make a restriction weaker are saved as pending.
-- The current, stronger rules keep working during the wait.
-- The new settings apply only after the selected delay.
-- Available delays range from **10 minutes** to **2 days**.
-- You can cancel a pending change before it takes effect.
-- If you make a stricter change to the same feature, it applies immediately and removes the weaker pending change.
-- Turning off the delay or choosing a shorter delay is itself treated as a weaker change, so that change must also wait.
-
+You can select a delay from 10 minutes through 2 days.
 
 ## Examples
 
-| Action | When it applies |
+| Change | Application time |
 |---|---|
-| Increasing an app limit from 30 minutes to 2 hours | After the delay |
-| Removing blocked apps | After the delay |
-| Disabling the keyword blocker | After the delay |
-| Adding a stricter block | Immediately |
-| Changing the delay from 2 days to "None" | After the current delay |
+| Increase an app limit from 30 minutes to 2 hours | After the delay |
+| Remove an app from a blocked group | After the delay |
+| Turn off Keywords And Websites | After the delay |
+| Add an app to a blocked group | Immediately |
+| Change the delay from 2 days to none | After the current 2-day delay |
 
+## Require Tamper Protection to be off
 
-## Require Tamper Protection Off
+Turn on **Require tamper protection off** to add a second condition. A weaker change stays pending after its delay ends while Tamper Protection is active.
 
-There is an optional **Require tamper protection off** setting. When enabled, weaker changes remain blocked even after their timer ends — they will not apply until [Tamper Protection](../reducers/tamper-protection) is turned off first.
+Turn off [Tamper Protection](../tamper-protection/) to let Curbox apply the pending change.
 
-<Aside type="tip">
-This option pairs well with a long delay. The combination means that weakening a setting requires both waiting out the delay **and** going through the tamper protection unlock process.
+<Aside type="note">
+This option requires both conditions. The delay must end, and Tamper Protection must be off.
 </Aside>

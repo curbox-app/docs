@@ -1,44 +1,46 @@
 ---
 title: Tamper Protection
-description: How tamper protection makes Curbox difficult to remove or disable during moments of temptation
+description: Add controls that make Curbox more difficult to remove or turn off
 sidebar:
   order: 11
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
+**Tamper Protection** makes common bypass actions more difficult. It uses the Android device administrator permission and the Curbox accessibility service.
 
-**Tamper protection** makes Curbox difficult to remove or disable during moments of temptation.
+## Actions that Curbox monitors
 
-When enabled, Curbox uses Android's device administrator permission and watches for attempts to bypass its protections. If it detects one of these attempts, it leaves the screen or sends you back.
+While Tamper Protection is active, Curbox monitors attempts to:
 
+- Uninstall Curbox
+- Remove its device administrator permission
+- Turn off its accessibility service
+- Open Android settings that can turn off its protection
 
-## What It Watches For
+When Curbox detects one of these actions, it closes the applicable screen or returns to the previous screen.
 
-- Uninstalling Curbox.
-- Removing its administrator permission.
-- Turning off the Curbox accessibility service.
-- Opening system screens that could disable its protection.
+## Unlock methods
 
-
-## Unlocking Tamper Protection
-
-Tamper protection can be unlocked in three ways:
-
-| Method | How it works |
+| Method | Function |
 |---|---|
-| **Password** | Protection turns off immediately after the correct password is entered. |
-| **Timed unlock** | Protection turns off automatically after the chosen number of days. Once started, the wait cannot be stopped. |
-| **One-day wait** | Protection turns off after one day, but the request can be cancelled during that wait. |
+| **Password** | Turns off Tamper Protection after you enter the correct password |
+| **Timed unlock** | Turns off Tamper Protection after the selected number of days; you cannot cancel this timer |
+| **One-day wait** | Turns off Tamper Protection after one day; you can cancel the request during the wait |
 
+Select an unlock method that you can complete when you must change a necessary Android setting.
 
 ## Interaction with Settings Change Delay
 
-While tamper protection is active, pending weaker settings changes may also be held back if the **Require tamper protection off** option is enabled in [Settings Change Delay](../reducers/settings-change-delay). This means a weaker change will not apply even after its timer runs out until tamper protection is turned off.
+[Settings Change Delay](../settings-change-delay/) can require Tamper Protection to be off. If this option is active, a weaker settings change has two conditions:
 
+- Its delay must end.
+- Tamper Protection must be off.
+
+Curbox does not apply the pending change until both conditions are true.
 
 ## Limitations
 
 <Aside type="caution">
-Tamper protection is a strong friction layer, not an absolute security guarantee. A device owner, factory reset, or other system-level control can still override it.
+Tamper Protection adds resistance, but it is not an absolute security control. A factory reset or another system-level action can remove the protection.
 </Aside>

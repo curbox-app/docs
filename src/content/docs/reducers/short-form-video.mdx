@@ -1,73 +1,73 @@
 ---
 title: Short-Form Video Content
-description: How to block reels and shorts after a time limit or a video count
+description: Block short-form videos with a schedule, time limit, or video limit
 sidebar:
   order: 3
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
+**Short-Form Video Content** blocks short-form videos when a configured condition is true. You can use a schedule, a watch-time limit, a video-count limit, or a combination.
 
-**Block Short Form Content** stops you from scrolling through reels and shorts once you hit a limit you set. You can cap by time, by video count, or both — and control exactly when and where the block applies.
+## Supported apps
 
+Curbox includes support for these official apps:
 
-## Supported Apps
+- Instagram and Instagram Lite for Reels
+- YouTube for Shorts
+- Facebook for Reels (experimental)
+- TikTok
 
-Block Short Form Content works in these apps:
+Community-maintained rules also support these modified apps:
 
-- Instagram (Reels)
-- Instagram lite 
-- YouTube (Shorts)
-- Facebook (Reels) (experimental)
-- Tiktok
-
-Curbox doesn't endorse any mod apps or illegal activities. These have been added by community members to the project.
 - MyInsta
-- Youtube ReVanced
+- YouTube ReVanced
 - Morphe
 
-btw if you're kinda tech savvy, you can easily add support for a new mod. Read [CONTRIBUTING.md](https://github.com/nethical6/curbox/)
+Support for a modified app can stop after an app update. Report a problem or contribute a rule in the [Curbox repository](https://github.com/nethical6/curbox).
 
+## Controls
 
-## How It Works
-
-| Control | What it does |
+| Control | Function |
 |---|---|
-| **Active Schedule** | Defines the time window(s) when the block is active. Short-form content is blocked during this period. |
-| **Usage Limit** | *(Optional)* Sets how long you can watch short-form videos during the active schedule before it blocks. Leave empty to block for the entire schedule window. |
-| **Configure Reel Count** | *(Optional)* Sets how many reels or shorts you can scroll through before the block triggers. |
-| **Allowed Apps** | Apps excluded from this configuration — short-form content in these apps will not be blocked. |
+| **Active Schedule** | Sets the days and times when the configuration applies |
+| **Usage Limit** | Sets the permitted watch duration during the active schedule |
+| **Configure Reel Count** | Sets the permitted number of short-form videos |
+| **Allowed Apps** | Excludes selected apps from this configuration |
+
+If **Usage Limit** is empty, Curbox blocks short-form videos for the complete active schedule.
 
 <Aside type="note">
-The reel count and time are combined across all supported apps. If you set a limit of 20 videos, watching 10 Reels on Instagram and 10 Shorts on YouTube counts as 20 total.
+The time and video counters include all supported apps. For example, 10 Instagram Reels and 10 YouTube Shorts equal 20 videos.
 </Aside>
 
-
-## Setting It Up
+## Configure a short-form video block
 
 <Steps>
 1. **Open Short-Form Video Content**
-   Tap **Reducers**, then tap **Short-Form Video Content**.
+   Tap **Reducers**. Then, tap **Short-Form Video Content**.
 
-2. **Toggle the main switch on**
-   The switch is at the top right of the screen.
+2. **Turn on the reducer**
+   Turn on the switch in the upper-right corner.
 
-3. **Set the Active Schedule**
-   Tap **Active Schedule** to define when the block should be active — which hours and days of the week.
+3. **Set the active schedule**
+   Tap **Active Schedule**. Select the days and times when the block applies.
 
-4. **Set a Usage Limit** (optional)
-   Tap **Usage Limit** to cap total watch time during the active schedule. Leave empty to block for the entire window.
+4. **Set a watch-time limit (optional)**
+   Tap **Usage Limit**. Enter the permitted watch duration.
 
-5. **Configure Reel Count** (optional)
-   Tap **Configure Reel Count** to set how many reels or shorts can be scrolled before the block triggers.
+5. **Set a video limit (optional)**
+   Tap **Configure Reel Count**. Enter the permitted number of videos.
 
-6. **Set Allowed Apps** (optional)
-   Tap **Allowed Apps** and select any apps that should be ignored by this configuration.
+6. **Exclude apps (optional)**
+   Tap **Allowed Apps**. Select each app that Curbox must exclude.
 
-7. **Configure the warning screen** (optional)
-   Tap **Configure Warning Screen** to choose what happens when the block triggers. See [Unlock Challenges](BASE_URL/unlock-challenges/overview) for the full guide.
+7. **Configure the warning screen (optional)**
+   Tap **Configure Warning Screen**. Configure the action that is necessary to continue. Read [Unlock Challenges](../../unlock-challenges/overview/) for all options.
 </Steps>
 
 <Aside type="caution">
-A single schedule block cannot cross midnight. For an overnight block like 11 PM to 2 AM, create two separate blocks: 11 PM to 12 AM, and 12 AM to 2 AM.
+A single time range cannot cross midnight. Use two ranges for an overnight schedule.
 </Aside>
+
+For 11:00 PM to 2:00 AM, use 11:00 PM to 12:00 AM and 12:00 AM to 2:00 AM.

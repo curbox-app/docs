@@ -1,87 +1,89 @@
 ---
 title: Focus Mode
-description: How to use Focus Mode to block distractions during a timed work session
+description: Create a Focus Group and start a timed blocking session
 sidebar:
   order: 1
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
+Focus Mode blocks selected apps and websites during a timed session. When the session ends, Curbox removes the Focus Mode blocks.
 
-Focus Mode lets you start a timed session where Curbox blocks your chosen apps and websites. When the timer runs out, everything goes back to normal. It is perfect for study sessions, deep work, or any time you want to concentrate without fighting the urge to check your phone.
+## Focus Groups
 
+A **Focus Group** is a saved set of apps, websites, and session options. You can use the same group for multiple sessions.
 
-## How It Works
+![The Focus screen with a 25-minute timer and a Create Focus Group button](../assets/focus-main-timer.png)
+*Drag the slider to set the session duration.*
 
-You set a session length using the slider on the **Focus** tab. Then you pick a **Focus Group** — a saved list of apps and websites to block or allow during the session. Tap to start and Curbox takes over.
+## Create a Focus Group
 
-![The Focus tab showing a large 25-minute timer with a horizontal scrubber and a Create Focus Group button](../assets/focus-main-timer.png)
-*Drag the scrubber to set your session length.*
-
-
-## Creating a Focus Group
-
-A Focus Group is a preset you save once and reuse anytime. You can have as many groups as you like.
-
-![The Create a new group sheet showing fields for group name, Select Apps, Add Websites, block mode toggle, and two checkboxes](../assets/focus-group-create-sheet.png)
-*The group setup sheet — fill in the details and tap Save Group.*
+![The Focus Group screen with fields for the group name, apps, websites, blocking mode, and session options](../assets/focus-group-create-sheet.png)
+*Configure the group, and then tap Save Group.*
 
 <Steps>
-1. **Open the Focus tab**
+1. **Open Focus**
    Tap **Focus** in the bottom navigation bar.
 
-2. **Tap Create Focus Group**
-   This opens the group setup sheet.
+2. **Create a group**
+   Tap **Create Focus Group**.
 
-3. **Enter a name**
-   Type a name in the **Enter Group Name** field. Call it something that reminds you what it is for, like "Work" or "Reading."
+3. **Enter a group name**
+   Enter a short name in **Enter Group Name**.
 
 4. **Select apps**
-   Tap **Select Apps** and choose the apps this group affects.
+   Tap **Select Apps**. Select the apps that the group controls.
 
-5. **Add websites** (optional)
-   Tap **Add Websites** and type any website addresses or keywords you want to include.
+5. **Add websites (optional)**
+   Tap **Add Websites**. Enter the websites or keywords that the group controls.
 
-6. **Choose a block mode**
-   Select one of the two options:
-   - **Block Selected** — blocks only the apps and websites you chose.
-   - **Block All Except Selected** — blocks everything except the apps and websites you chose.
+6. **Select a blocking mode**
+   Select **Block Selected** to block only the selected items. Select **Block All Except Selected** to allow only the selected items.
 
-7. **Set extra options** (optional)
-   - Toggle **Let me quit mid-sessions** on if you want to be able to end the session even if it's incomplete.
-   - Toggle **Turn on do not disturb** on if you want your phone to silence notifications during the session.
+7. **Permit an early stop (optional)**
+   Turn on **Let me quit mid-sessions** to permit an early stop.
 
-8. **Tap Save Group**
-   Your group is saved and ready to use.
+8. **Use Do Not Disturb (optional)**
+   Turn on **Turn on do not disturb** to silence notifications during the session.
+
+9. **Save the group**
+   Tap **Save Group**. Curbox adds the group to the Focus screen.
 </Steps>
 
-
-
-## Starting a Session
+## Start a session
 
 <Steps>
-1. **Set the timer**
-   Drag the slider on the **Focus** tab to pick your session length in minutes.
+1. **Set the session duration**
+   Drag the slider on the **Focus** screen.
 
-2. **Choose your group**
-   Select an existing group from the dropdown, or tap **Create Focus Group** to make a new one.
+2. **Select a Focus Group**
+   Select a saved group from the list.
 
-3. **Start**
-   Tap the confirm button. Curbox activates your group for the duration you set.
+3. **Start the session**
+   Tap the confirmation button. Curbox applies the group until the timer ends.
 </Steps>
 
 <Aside type="tip">
-Start with 25 minutes. It is long enough to get something done but short enough to feel manageable. You can always go longer once it feels comfortable.
+If you are new to Focus Mode, start with a 25-minute session. Increase the duration after you complete several sessions.
 </Aside>
 
+## View Focus Stats
 
-## Focus Stats
+Tap the bar-chart icon next to the session slider. The **Focus Stats** screen shows these values:
 
-Tap the bar chart icon next to the session slider to open **Focus Stats**. You can see your total sessions, total focus time, average session length, completion rate, and your current day streak. Use the dropdown at the top to filter by group.
+- Number of sessions
+- Total focus time
+- Average session duration
+- Completion rate
+- Current daily streak
 
-![The Focus Stats screen showing Sessions, Total Time, Streak, Avg Session, and Completed percentage tiles above a weekly bar chart](../assets/focus-stats-screen.png)
-*Focus Stats — all your session data in one place.*
+Use the group selector to show the statistics for one Focus Group.
 
-## NFC connection
- 
-if you wish to start focus session with a nfc tag, press the nfc icon on the top right.
+![The Focus Stats screen with session, total time, streak, average session, and completion values](../assets/focus-stats-screen.png)
+*Use the group selector to filter the Focus Stats values.*
+
+## Use an NFC tag
+
+Tap the NFC icon in the upper-right corner of the **Focus** screen. Follow the on-screen instructions to connect a Focus Group to an NFC tag.
+
+After the setup, scan the tag to start the connected session.

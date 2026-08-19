@@ -1,56 +1,84 @@
 ---
 title: Usage Stats
-description: How to read your screen time data and export it as a file
+description: View your device-use statistics and export the data to a CSV file
 sidebar:
   order: 1
 ---
 
-import { Aside } from '@astrojs/starlight/components';
+import { Steps, Aside } from '@astrojs/starlight/components';
 
+The **Usage** screen shows your screen time and your app use. It can also show website and short-form video statistics.
 
-The **Usage** tab shows you exactly where your time goes. You get a weekly chart, a breakdown by app, and website stats for every browser you use.
+## View app statistics
 
-## Reading Your Stats
+The **TOTAL TODAY** value shows your total screen time for the current day. The chart below this value shows one bar for each day of the week.
 
-The top of the screen shows **TOTAL TODAY** — your total screen time so far today. Below it is a bar chart covering the current week. Tap any day's bar to see that day's total.
+Tap a bar to see the total for that day. Use the arrows to show a different week.
 
-Use the arrows to browse previous weeks.
+The app list shows the use duration for each app. Scroll down to see all apps.
 
-Scroll down to see a list of every app you used, with today's time shown next to each one.
+## View website statistics
 
+Curbox can measure website use in a supported browser. The website statistics appear below the app list and are grouped by browser.
 
-## Website Stats
+If a browser is not supported, Curbox does not show website statistics for that browser.
 
-If you use a supported browser, Curbox tracks which websites you visited and for how long. The website stats appear below the app list, grouped by browser.
+## View short-form video statistics
 
-## Short form video stats
+The short-form video section shows these values:
 
-You can view an aggregate of how many videos you scrolled, how long and even your average attention span!
+- Number of watched videos
+- Total watch duration
+- Average attention duration
 
+## Exclude an app
 
-## Ignoring Apps
+Some background apps can add unwanted data to your statistics.
 
-Some apps run in the background and inflate your stats. To hide an app from the list, add it to the ignore list. Tap the three-dot menu at the top right and choose **Ignore List**, then add the apps you want to exclude.
+<Steps>
+1. **Open the Usage menu**
+   Tap the menu in the upper-right corner of the **Usage** screen.
 
+2. **Open the ignore list**
+   Tap **Ignore List**.
 
-## Exporting Your Data
+3. **Select apps**
+   Add each app that you do not want in the statistics.
+</Steps>
 
-You can export your usage data as a CSV file to open in a spreadsheet. Tap the three-dot menu and choose **Export**. Three options are available:
+## Export usage data
 
-- **Daily Breakdown** — one row per app per day
-- **Total Summary** — one total row per app
-- **Both** — a file that includes both views
+<Steps>
+1. **Open the Usage menu**
+   Tap the menu in the upper-right corner.
 
+2. **Start the export**
+   Tap **Export**.
 
-## Home Screen Widgets
+3. **Select an export type**
+   Select **Daily Breakdown**, **Total Summary**, or **Both**.
 
-Curbox offers two home screen widgets so you can see your stats without opening the app.
+4. **Save the file**
+   Select a location for the CSV file.
+</Steps>
 
-- **Screentime Widget** — shows your total screen time today
-- **Reels Widget** — shows how many short form videos you have watched today
+The export types contain this data:
 
-To add a widget, tap the three-dot menu and choose **Pin Widget**, then select the one you want.
+| Export type | Data |
+|---|---|
+| **Daily Breakdown** | One row for each app on each day |
+| **Total Summary** | One total row for each app |
+| **Both** | The daily breakdown and the total summary |
 
-<Aside type="tip">
-Placing the Screentime Widget on your home screen is one of the simplest things you can do. Awareness of your usage — without any blocking — is often enough to nudge you toward better habits.
+## Add a home-screen widget
+
+Curbox has these widgets:
+
+- **Screentime Widget** shows the total screen time for the current day.
+- **Reels Widget** shows the number of short-form videos for the current day.
+
+Open the **Usage** menu, and tap **Pin Widget**. Then, select a widget.
+
+<Aside type="note">
+Your home-screen app controls the final widget position and size.
 </Aside>

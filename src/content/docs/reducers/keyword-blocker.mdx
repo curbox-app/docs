@@ -1,19 +1,17 @@
 ---
 title: Keywords and Websites
-description: How to block specific websites and URLs across your browsers
+description: Block matching websites and URL paths in supported browsers
 sidebar:
   order: 4
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
+**Keywords And Websites** reads the address in a supported browser. Curbox shows a warning screen when the address matches a configured keyword.
 
-**Keyword Blocker** watches the address bar in your browser. The moment you land on a page whose URL contains a word you have blocked, Curbox steps in with a pause screen.
+## Supported browsers
 
-
-## Supported Browsers
-
-Keyword Blocker works in these browsers:
+Curbox supports these browsers:
 
 - Google Chrome
 - Brave
@@ -25,229 +23,183 @@ Keyword Blocker works in these browsers:
 - Vivaldi
 - Opera
 - Cromite
-- Vanadium (GrapheneOS)
-
-also if you're kinda pro, you can easily add support for a browser, especially if it's Chromium or Firefox based. Read [CONTRIBUTING.md](https://github.com/curbox-app/curbox-android/CONTRIBUTING.md)
+- Vanadium on GrapheneOS
 
 <Aside type="note">
-Keyword Blocker only works in the browsers listed above. If you use a different browser, the blocking will not apply there. Consider adding that browser to **App Pause** instead.
+This reducer does not block a website in an unsupported browser. Use [App Pause](../app-pause/) to control an unsupported browser.
 </Aside>
 
+Developers can add a browser rule to the [Curbox project](https://github.com/nethical6/curbox/blob/main/CONTRIBUTING.md).
 
-## How a Group Works
+## Keyword group controls
 
-Each Keyword Blocker group has two controls:
-
-| Control | What it does |
+| Control | Function |
 |---|---|
-| **Active Schedule** | Defines the time window(s) when the block is active. Matching URLs are blocked during this period. |
-| **Usage Limit** | *(Optional)* Sets how long you can browse matched sites during the active schedule before they get blocked. Leave this empty to block the sites for the entire schedule window without any browsing allowance. |
+| **Active Schedule** | Sets the days and times when the group applies |
+| **Usage Limit** | Sets the permitted use duration for matching websites during the active schedule |
 
-For example, an Active Schedule of 9 AM – 5 PM with no Usage Limit blocks the sites entirely during work hours. Add a Usage Limit of 15 minutes and the sites are accessible during that window, but only for 15 minutes before they lock.
+If **Usage Limit** is empty, Curbox blocks matching websites for the complete active schedule.
 
+Example: A group is active from 9:00 AM to 5:00 PM. An empty limit blocks each match immediately. A 15-minute limit permits 15 minutes of use before Curbox blocks the matches.
 
-## Creating a Keyword Group
+## Create a keyword group
 
-![The Keyword Blocker screen showing an empty state with No keyword groups yet message and a + button in the corner](../assets/keyword-blocker-screen.png)
-*Tap the + button to create your first keyword group.*
+![The Keywords And Websites screen with an empty group list and a plus button](../assets/keyword-blocker-screen.png)
+*Tap the plus button to create a keyword group.*
 
 <Steps>
-1. **Open Keyword Blocker**
-   Tap **Reducers**, then tap **Keywords And Websites**.
+1. **Open Keywords And Websites**
+   Tap **Reducers**. Then, tap **Keywords And Websites**.
 
-2. **Tap the + button**
-   The **+** button is in the bottom right corner.
+2. **Create a group**
+   Tap the **+** button.
 
-3. **Enter a name**
-   Give your group a name, like "Social Media Sites" or "News."
+3. **Enter a group name**
+   Enter a short name that identifies the websites.
 
 4. **Add keywords**
-   Type the words or URL fragments you want to block. One keyword per entry.
-   Scroll a few inches below on this page to learn how to write em properly.
+   Enter one domain, path, word, wildcard pattern, or regular expression in each entry. See [Keyword syntax](#keyword-syntax).
 
-5. **Set the Active Schedule**
-   Tap **Active Schedule** to define when the block should be active — which hours and days of the week.
+5. **Set the active schedule**
+   Tap **Active Schedule**. Select the days and times when the group applies.
 
-6. **Set a Usage Limit** (optional)
-   Tap **Usage Limit** to cap how long the sites can be browsed during the active schedule. Leave it empty to block them for the entire schedule window.
+6. **Set a usage limit (optional)**
+   Tap **Usage Limit**. Enter the permitted use duration.
 
-7. **Configure the warning screen** (optional)
-   Tap **Configure Warning Screen** to choose what happens when someone visits a blocked URL. See [Unlock Challenges](BASE_URL/unlock-challenges/overview).
+7. **Configure the warning screen (optional)**
+   Tap **Configure Warning Screen**. Configure the action that is necessary to continue. Read [Unlock Challenges](../../unlock-challenges/overview/) for all options.
 
-8. **Save**
-   Tap **Done**. The group is active immediately.
+8. **Save the group**
+   Tap **Done**. Curbox activates the group.
 </Steps>
 
 <Aside type="tip">
-We have made a list of keyword packs for p*rn, gambling, and so on [here](https://github.com/curbox-app/website_packs). If you're lazy to write keywords, you can easily import those into curbox!
+You can import a prepared list from the [Curbox website packs repository](https://github.com/curbox-app/website_packs).
 </Aside>
 
+## Use a keyword in multiple groups
 
-## Using Multiple Groups for the Same Keywords
+You can put the same keyword in multiple groups. This lets you use different limits at different times.
 
-You can have the same keyword in more than one group. This lets you apply different rules at different times — for example, a strict block overnight and a short usage allowance during the day.
+The active schedules for the shared keyword must not overlap. If they overlap, Curbox shows a warning. Change one schedule before you activate both groups.
 
-**The schedules must not overlap.** If two groups share a keyword and their Active Schedules overlap, Curbox will show a warning. Fix the overlap before the groups can both be active.
+## Keyword syntax
 
+Select the least complex syntax that meets your requirement.
 
-# How to Write Keywords
+### Block a complete website
 
-Keywords tell Curbox what websites or content to watch. When you visit something that matches a keyword, Curbox steps in based on the rules you set.
+Enter the domain:
 
-Here is everything you need to know to write keywords that actually work.
-
----
-
-## The simplest way: just type the website name
-
-If you want to block a whole website, just type its domain.
-
-```
+```text
 youtube.com
 reddit.com
 twitter.com
 ```
 
-That is it. Curbox will block the site no matter what page you are on.
+Do not include `https://` or `www.`. Curbox normalizes these parts before it checks the address.
 
-You do not need to add `https://` or `www.` — Curbox handles that for you.
+### Block one website section
 
----
+Enter a domain and a path:
 
-## Block a specific section of a website
-
-Maybe you only want to block YouTube Shorts, not all of YouTube.
-
-Type the domain plus the path:
-
-```
+```text
 youtube.com/shorts
-```
-
-Now only Shorts get blocked. Regular YouTube videos are still allowed.
-
-More examples:
-
-```
 instagram.com/reels
 reddit.com/r/gaming
-facebook.com/reel
 ```
 
----
+`youtube.com/shorts` blocks the Shorts section. It does not block other YouTube paths.
 
-## Block by path only (any website)
+### Block a path on all websites
 
-If you start a keyword with `/`, Curbox matches that path on any website.
+Start the entry with `/`:
 
-```
+```text
 /shorts
 /reels
 /reel
 ```
 
-This blocks the `/shorts` path on YouTube, the `/reels` path on Instagram, and so on — all in one keyword.
+For example, `/shorts` matches that path on each website.
 
----
+### Use a wildcard
 
-## Use wildcards for flexible matching
+Use `*` to match zero or more characters:
 
-A `*` means "anything can go here."
-
-```
+```text
 *.reddit.com
-```
-
-This matches `old.reddit.com`, `www.reddit.com`, `m.reddit.com` — any version of Reddit.
-
-```
 youtube.com/watch*
 ```
 
-This matches any YouTube watch page, no matter what video ID comes after.
+`*.reddit.com` matches Reddit subdomains. `youtube.com/watch*` matches YouTube watch addresses with different query values.
 
-`?` works like `*` but matches exactly one character instead of many. You will rarely need this.
+Use `?` to match one character.
 
----
+### Match a word in a domain
 
-## Block by a single word
+Enter a word without a period or slash:
 
-If you type just a plain word with no dots or slashes, Curbox looks for it as a piece of the domain name.
-
-```
+```text
 youtube
 ```
 
-This matches `youtube.com`, `m.youtube.com`, `youtube.co.uk` — anything with `youtube` as a domain segment.
+This entry matches domains such as `youtube.com` and `youtube.co.uk`. It does not match the page content.
 
-Useful when a site has many regional versions.
+### Use a regular expression
 
----
+Start a regular expression with `r:`:
 
-## Advanced: raw regex
-
-If you know regular expressions, you can write one by starting the keyword with `r:`.
-
-```
+```text
 r:(?:shorts|reels|reel)
 ```
 
-This matches any URL that contains the word `shorts`, `reels`, or `reel` anywhere in it.
+Use this syntax only when the other keyword types cannot make the required match.
 
-Only use this if you are comfortable with regex. A typo will silently make the keyword do nothing.
+<Aside type="caution">
+Curbox skips a regular expression that has invalid syntax. Test the expression before you add it to a group.
+</Aside>
 
----
+## Import keywords from a file
 
-## Importing a list from a file
+Create a text file with one keyword on each line:
 
-You can add many keywords at once by importing a `.txt` file.
-
-The file should have one keyword per line:
-
-```
+```text
 youtube.com/shorts
 instagram.com/reels
 /reel
 tiktok.com
 ```
 
-Blank lines are ignored. Duplicates are skipped automatically.
+Curbox ignores empty lines and duplicate entries.
 
-To import, open the keyword group, tap the three dot menu at the top, and choose **Import**.
+<Steps>
+1. **Open the keyword group**
+   Open the group that must receive the entries.
 
+2. **Open the group menu**
+   Tap the menu in the upper-right corner.
 
-<Aside type="tip">
-Join our super pro [Discord Server](https://discord.com/invite/Vs9mwUtuCN) where you can request and download keyword lists
-</Aside>
+3. **Import the file**
+   Tap **Import**. Select the text file.
+</Steps>
 
+## Correct common errors
 
----
-
-## Common mistakes
-
-**Adding `https://` or `www.`**
-You do not need these. `youtube.com` works the same as `https://www.youtube.com`.
-
-**Being too broad**
-`com` as a keyword would try to match every `.com` site. Keep keywords specific to what you actually want to block.
-
-**Being too specific**
-`youtube.com/shorts?v=abc123xyz` only blocks that one exact video. Use `youtube.com/shorts` instead to block all Shorts.
-
-**Typos in regex**
-If a keyword starts with `r:` and has a syntax error, it gets skipped silently. Test your regex before adding it.
-
----
+| Error | Correction |
+|---|---|
+| The entry contains `https://` or `www.` | Remove these parts. Enter `youtube.com`. |
+| The entry is too broad, such as `com` | Add a specific domain or path. |
+| The entry contains one complete video address | Remove the video identifier to match the complete section. |
+| A regular expression does not match | Check its syntax and test it again. |
 
 ## Quick reference
 
-| What you want | What to type |
+| Requirement | Entry |
 |---|---|
-| Block a whole site | `youtube.com` |
+| Block a complete website | `youtube.com` |
 | Block one section | `youtube.com/shorts` |
-| Block a path on any site | `/shorts` |
+| Block a path on all websites | `/shorts` |
 | Block all subdomains | `*.youtube.com` |
-| Block by domain word | `youtube` |
-| Advanced match | `r:shorts\|reels` |
-
-
+| Match a domain word | `youtube` |
+| Use a regular expression | `r:(?:shorts\|reels)` |

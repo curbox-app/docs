@@ -1,51 +1,57 @@
 ---
 title: Short-Form Video Counter
-description: How to display a live count of short videos you have scrolled through today
+description: Show and review the number of short-form videos that you watch
 sidebar:
   order: 8
 ---
 
+import { Steps } from '@astrojs/starlight/components';
 
-**Short-Form Video Counter** shows a number on your screen as you scroll through reels and shorts. Seeing the count climb in real time is a surprisingly honest way to stay aware of how much you are actually watching.
+**Short-Form Video Counter** shows the current video count over a supported app. It also records a daily and weekly count.
 
-## Supported Apps
+## Supported apps
 
-- Instagram (Reels)
-- YouTube (Shorts)
-- Facebook (Reels)
-- Tiktok
+Curbox includes support for these official apps:
 
-Curbox doesn't endorse any mod apps or illegal activities. These have been added by community members to the project.
+- Instagram for Reels
+- YouTube for Shorts
+- Facebook for Reels
+- TikTok
+
+Community-maintained rules also support these modified apps:
+
 - MyInsta
-- Youtube ReVanced
+- YouTube ReVanced
 - Morphe
 
+## Turn on the counter
 
-## Enabling the Counter
+<Steps>
+1. **Open Short-Form Video Counter**
+   Tap **Reducers**. Then, tap **Short-Form Video Counter**.
 
-Tap **Reducers**, then tap **Short-Form Video Counter**. Toggle on the switch at the top of the screen. The description reads "Track the number of short videos you scroll."
+2. **Turn on the counter**
+   Turn on the switch at the top of the screen.
+</Steps>
 
-The counter is now live. It appears on screen whenever you scroll through a supported app.
+The counter appears when you view short-form videos in a supported app.
 
+## Read the statistics
 
+![The Short-Form Video Counter screen with a total for today and a weekly chart](../assets/video-counter-screen.png)
+*The screen shows the current daily total and the weekly history.*
 
-## Reading Your Stats
+The screen contains these values:
 
-![The Short-Form Video Counter screen showing a large number 9 labeled TOTAL TODAY above a weekly bar chart with a bar on Saturday, and Appearance sliders below](../assets/video-counter-screen.png)
-*Today's total and your weekly trend — both visible on the same screen.*
+- **TOTAL TODAY** is the number of short-form videos for the current day.
+- The weekly chart shows one bar for each day.
 
-The **Short-Form Video Counter** screen shows:
+Use the arrows below the chart to show a different week.
 
-- **TOTAL TODAY** — how many short videos you have watched today
-- **Weekly chart** — a bar for each day of the week so you can spot patterns over time
+## Change the appearance
 
-Use the arrows at the bottom of the chart to browse previous weeks.
+Scroll to **Appearance**. Configure these controls:
 
-
-## Appearance
-
-Scroll down to the **Appearance** section to change how the counter looks on screen.
-
-- **Text Size** — drag the slider to resize the counter
-- **Text Opacity** — drag the slider to make it more or less visible
-- **Background Color** — tap a color swatch to change the background behind the number
+- **Text Size** changes the counter size.
+- **Text Opacity** changes the counter visibility.
+- **Background Color** changes the background behind the counter.
