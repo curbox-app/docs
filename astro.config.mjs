@@ -112,6 +112,10 @@ export default defineConfig({
       customCss: [
         './src/styles/custom.css',
       ],
+      components: {
+        // Keep ads below the article so they never interrupt documentation.
+        Footer: './src/components/AdSupportedFooter.astro',
+      },
       sidebar: [
         {
           label: 'Getting Started',
