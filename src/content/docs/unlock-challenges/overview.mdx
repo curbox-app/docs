@@ -1,78 +1,84 @@
 ---
 title: Unlock Challenges
-description: Configure the action that is necessary to continue past a Curbox block
+description: How to choose what happens when you try to bypass a block in Curbox
 sidebar:
   order: 1
 ---
 
-import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Curbox shows a warning screen when a reducer blocks an app, website, or short-form video. An **Unlock Challenge** controls whether you can continue past the warning screen.
 
-Open the applicable reducer group. Then, tap **Configure Warning Screen**.
+When a block triggers in Curbox, a pause screen appears. **Warning Screen** controls what happens on that screen — whether you can get past it, how hard that is, and how long it takes.
 
-## When the warning screen appears
+You set the challenge inside each App Pause or Short-Form Video group by tapping **Configure Warning Screen**.
 
-The warning screen appears when the conditions for a block are true. For example, it appears when you reach a usage limit during an active schedule.
+## When is this screen shown?
+This screen gets triggered when you try accessing an app out of its schedule.
+For example, if I've set the blocking mode to Time based with an allowed schedule between 2 pm and 6 pm every day. This screen won't show up if I access the app between 2 pm
+and 9 pm. If I try to access the apps in this group anytime other than the schedule, this screen decides what has to be done.
 
-If you select **On each open**, the warning screen appears each time you open a configured app.
+<Aside type="note">
+In case of "on each open" mode, this screen will be triggered every time you open the app. 
+</Aside>
 
-## Select an Unlock Challenge
+## Choosing a Challenge Type
 
-Open **Unlock Challenge** on the **Warning Screen Configuration** screen. Select one of the available challenge types.
+The **Warning Screen Configuration** screen has one main setting: the **Unlock Challenge** dropdown. There are three options.
 
-![The Unlock Challenge menu with Never Unlock, Require effort to unlock, and Wait to unlock](../assets/unlock_challenge_dropdown.png)
+![The Warning Screen Configuration screen showing the Unlock Challenge dropdown open with three options: Never Unlock, Require effort to unlock, and Wait to unlock](../assets/unlock_challenge_dropdown.png)
+
+<Aside type="tip">
+**Require effort to unlock** is the recommended choice for most people. Adding a small task breaks the automatic habit loop and gives your brain a moment to make a real decision.
+</Aside>
 
 <Tabs>
   <TabItem label="Never Unlock">
-    **Never Unlock** does not show a continue action. The block stays active while the reducer conditions are true.
+    **Never Unlock** turns the block into a total lockdown. The pause screen shows no way past it.
+
+    Use this when you want to make an app completely off-limits with no exceptions — no loopholes, no "just this once."
   </TabItem>
   <TabItem label="Require Effort">
-    **Require effort to unlock** makes an action necessary before you can continue.
+    **Require effort to unlock** adds a task you must complete before the proceed button appears. There are three effort types to choose from:
 
-    Curbox can show these actions:
+    - **QR or Barcode Scan** — you must scan a specific QR code you set up in advance. Putting the code on a shelf in another room makes it genuinely inconvenient.
+        <Aside type="tip"> Curbox doesn't necessarily require you to print a new qr/barcode code. You can simply take a product box with a qr, and configure curbox to work with it. Its highly recommended you disperse this qr code away from the usual place you scroll.</Aside>
+        <Aside type="tip"> You can set a QR code to unlock scrolling time. It can either grant a pre-set amount of time (like 10 minutes) or let you pick the time right when you scan it.</Aside>
+    - ** NFC **
+    - ** Adaptive Math **
+    - **Type a Sentence** — you must type a sentence exactly as written. The deliberate act of typing creates a natural pause.
+    - **State Your Intent** — you must type what you plan to do in the app. Your reason is saved so you can review it later.
 
-    - **QR or Barcode Scan** requires the configured code. You can use a code on a product package.
-    - **NFC** requires the configured NFC tag.
-    - **Adaptive Math** requires answers to math questions.
-    - **Type a Sentence** requires the displayed sentence.
-    - **State Your Intent** requires a reason for opening the app. Curbox saves the reason for later review.
-
-    Put a physical code or NFC tag away from the location where you usually use the app. This adds movement to the unlock process.
   </TabItem>
-  <TabItem label="Wait to Unlock">
-    **Wait to unlock** starts a timer before you can continue. It does not require another action.
+  <TabItem label="Wait to unlock">
+    **Requires no effort to unlock** makes you wait before the proceed button appears, but no task is required.
 
-    Select one of these timer types:
+    Two timing options are available:
 
-    - **Fixed time** uses the same duration for each warning.
-    - **Dynamic time** changes the duration for each warning.
+    - **Fixed time** — the wait is always the same number of seconds.
+    - **Dynamic time** — the wait changes each time, so you cannot predict how long it will be.
   </TabItem>
 </Tabs>
 
-## Add a delay timer
+## The Delay Timer
 
-You can add a delay before Curbox shows the selected challenge. During the delay, Curbox increases the screen brightness and vibrates the device.
-
-The delay and the Unlock Challenge are separate settings. If you configure both, the delay occurs first.
-
-## Limit unlock frequency
-
-Set an unlock limit to control how many times you can continue during a specified period. When you reach the limit, Curbox removes the continue action until the period resets.
-
-## Add a daily focus requirement
-
-Connect a Focus Group to the warning-screen configuration. Curbox permits an unlock only after you complete the specified daily focus duration.
-
-## Add a custom message
-
-Enter a short message that Curbox shows on the warning screen. Use a message that states the reason for the block.
-
-Examples:
-
-- `I will use this app for one planned task.`
-- `I can continue after I complete my focus goal.`
+Whatever challenge type you choose, you can add a countdown before the challenge even appears. During the countdown, your screen brightens and your phone vibrates — a physical reminder that you are about to make a choice.
 
 <Aside type="tip">
-Start with one challenge and a short delay. Add more controls only if the first configuration does not meet your goal.
+Even a 10 second delay is often enough. That brief pause interrupts autopilot and gives you the chance to ask whether you really want to open the app.
 </Aside>
+
+# Advanced
+
+## Limit Unlock Frequency
+
+You can cap how many times you are allowed to proceed through a block within a given time window. Once you hit the cap, the proceed button disappears until the window resets.
+
+## Daily Focus Requirement
+
+You can connect a particular focus group with the warning config to replicate a behaviour like "focus for x hours a day to unlock entities"
+
+## Custom Message
+You can setup a message that appears when you open a blocked entity. Combining this together with delay timer, forces you to think before you mindlessly start scrolling.
+Examples of good custom messages:
+- Are you truly giving up your dreams to scroll 5 mins?
+- That 5 mins costs you 100 days in 5 years btw

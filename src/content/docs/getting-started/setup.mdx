@@ -1,62 +1,81 @@
 ---
 title: Set Up Curbox
-description: Install Curbox and give it the permissions that its features use
+description: How to install Curbox and grant the permissions it needs to work
 sidebar:
   order: 2
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
 
-Install Curbox from an official source. Then, give Curbox the permissions for the features that you use.
 
-## Install Curbox
+Curbox needs a few special permissions to do its job. This page walks you through each one. The whole process takes about five minutes.
 
-Use one of these official sources:
 
-- [F-Droid](https://f-droid.org/)
-- [Curbox releases on GitHub](https://github.com/nethical6/curbox/releases/latest)
+## Install the App
 
-For the simplest update process, install Curbox with the F-Droid app. You can also download the APK file from GitHub Releases.
+Use the fdroid app (not the website please, takes longer to set up) to install curbox.
 
 <Aside type="danger">
-Do not install Curbox from an unofficial source. Curbox uses sensitive Android permissions, and a modified APK can put your data at risk.
+Never download curbox from anywhere except the [official github releases](https://github.com/nethical6/curbox) or [fdroid](https://f-droid.org/). It uses extremely sensitive permissions to operate and may lead to complete takeover of your phone and all data by hackers remotely.
 </Aside>
 
-### If Android shows a security warning
+## Play Console Warnings and virus flags
+Honestly big corps just don't like curbox because it destroys their business.
+Your phone's security is just panicking and flagging the app as a virus because it needs deep control over your phone to block other apps. But it's actually completely safe for two main reasons: 
 
-Android can show a warning for an app that you install outside Google Play. Confirm that you downloaded the APK from the official Curbox GitHub repository.
+[**Open source Nature**](https://en.wikipedia.org/wiki/Open_source)
+-First, the app has an "open kitchen" policy where its code is totally public, meaning tech experts all over the world are constantly checking it to make sure the creator isn't sneaking in anything shady. 
 
-Do not turn off Play Protect for all apps. Follow the on-screen Android procedure for this APK only.
+**Never connects to internet**
+- Second, and most importantly, the app literally does not have the ability to connect to the internet. Because your phone physically locks it out from going online, it is 100% impossible for it to spy on you or send your personal data anywhere, so your stuff is completely safe.
 
-Some Android versions block accessibility access for a sideloaded app. If Android blocks access, open the Curbox app information screen. Open the menu and tap **Allow restricted settings**. The exact menu can be different on each device.
+Here's how to temporarily turn off play protect: 
+1. **Open the Play Store:**
+Launch the **Google Play Store** app on the Android phone.
 
-## Give Curbox the required permissions
+2. **Tap the profile icon:**
+Tap the profile picture or initial in the top right corner of the screen.
 
-Curbox shows its permission setup when you first open the app. Give a permission only when you want to use its related feature.
+3. **Select Play Protect:**
+Find and tap on **Play Protect** in the menu that pops up.
+
+4. **Open Settings:**
+Tap the gear icon (Settings) in the top right corner of the Play Protect screen.
+
+5. **Turn off scanning:** This stops the virus warnings.
+Toggle off the switch that says **Scan apps with Play Protect**.
+
+6. **Confirm the change:**
+Tap **Turn off** on the popup window to confirm. (The phone might ask for the PIN or fingerprint here).
+
+
+## Grant Permissions
+
+When you first open Curbox, an onboarding screen guides you through a few permissions. You can grant them one by one, or use Shizuku to grant them all automatically.
+
+<Aside type="tip">
+Shizuku is a tool that allows apps to access advanced permissions. [Learn more](https://shizuku.rikka.app/)
+</Aside>
 
 <Steps>
-1. **Allow display over other apps**
-   Tap the overlay permission in Curbox. Select **Curbox**, and turn on **Display over other apps**. Curbox uses this permission for warning screens and overlays.
+1. **Screen Overlay**
+   This lets Curbox display a pause screen on top of other apps when a block triggers. Tap the button, find Curbox in the list, and turn on **Display over other apps**.
 
-2. **Allow notifications**
-   Tap the notification permission. Then, tap **Allow**. Curbox uses a notification to keep an active service visible.
+2. **Notifications**
+   Curbox uses a small notification to keep its service running in the background. Tap the button and allow notifications.
 
-3. **Allow Do Not Disturb access**
-   Tap the Do Not Disturb permission. Select **Curbox**, and allow access. Focus Mode and Auto DND use this permission.
+3. **Do Not Disturb**
+   Allows curbox to turn on dnd according to your schedules.
 
-4. **Turn on App Blocker Accessibility**
-   Tap **App Blocker Accessibility**. Select **Curbox**, and turn on the service. Curbox uses this service to apply blocks and reducers.
+4. **App Blocker Accessibility**
+   This is the main permission. It lets Curbox see which app is on screen so it can block it when needed. Tap the button, find **Curbox** in the list, and turn it on.
 
-5. **Turn on Usage Tracker Accessibility**
-   Tap **Usage Tracker Accessibility**. Select **Curbox**, and turn on the service. Curbox uses this service to measure app use.
+5. **Usage Tracker Accessibility**
+   This lets Curbox track how long you spend in each app. Tap the button, find **Curbox** in the list, and turn it on.
 </Steps>
 
-<Aside type="note">
-Android setting names can be different on some devices. Return to Curbox after you give each permission.
+
+<Aside type="caution">
+If you're kinda dumbahh and still downloaded the app as a .apk file despite the earlier warning. You won't be able to give permissions like dnd and accessibility.
+In this case you'll have to give the app restricted settings permission. Just search yt on how to do that or install from fdroid app.
 </Aside>
-
-## Optional Shizuku setup
-
-Some Curbox features use permissions that Android does not give through the usual settings. Curbox can request these permissions through [Shizuku](https://shizuku.rikka.app/).
-
-The [Grayscale Filter](../../reducers/grayscale/) page contains the Shizuku procedure and an ADB alternative.
