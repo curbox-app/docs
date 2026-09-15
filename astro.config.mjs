@@ -111,10 +111,6 @@ posthog.init('phc_CoWQ2X7F68VxjSBEPr888kvU23pydNvcaMt7aLFz5uub', {
       customCss: [
         './src/styles/custom.css',
       ],
-      components: {
-        // Keep ads below the article so they never interrupt documentation.
-        Footer: './src/components/AdSupportedFooter.astro',
-      },
       sidebar: [
         {
           label: 'Getting Started',
